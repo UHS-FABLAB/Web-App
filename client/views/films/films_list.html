@@ -1,0 +1,25 @@
+<template name="filmsList">
+  Liste des films
+  <div class="rTable rTable-Films">
+    <div class="rTableHeading">
+      <div class="rTableHead">
+        Titre
+      </div>
+      <div class="rTableHead">
+        Sequences
+      </div>
+      <div class="rTableHead">
+        Editer
+      </div>
+      <div class="rTableHead">
+        Commentaires
+      </div>
+    </div>
+    <div class="films rTableBody">
+      {{#each films}}
+        {{> filmItem}}
+      {{/each}}
+    </div>
+  </div>
+
+</template>

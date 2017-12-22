@@ -1,0 +1,46 @@
+<template name="filmPage">
+  <div class="film-page page">
+    {{> filmItem}}
+    <ul class="sequences">
+    {{#each sequences}}
+      {{> sequenceItem}}
+    {{/each}}
+  </ul>
+  {{#if currentUser}}
+    {{> sequenceSubmit}}
+  {{else}}
+    <p>Please log in to leave a comment.</p>
+  {{/if}}
+    <div class="fullscreen">
+      <div class="inner-fullscreen">
+        <video id="videoPlayer2" class="fullscreen">
+          <source src="/video/aGrgrTe9BRbKhtMFc/1" type="video/mp4">
+        </video>
+        <div class="videoPlayer-choix">
+          <div class="videoPlayer-bloc-question">
+            <div class="videoPlayer-question">
+              A quoi va servir le Zyklon B ?
+            </div>
+            <div class="videoPlayer-reponses">
+              <div class="videoPlayer-reponse">
+                Aux chambres à gaz
+              </div>
+              <div class="videoPlayer-reponse">
+                A faire de la cuisine
+              </div>
+            </div>
+          </div>
+          <div class="videoPlayer-bloc-loader">
+            <div class="loader-line" id="myLoader">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</template>

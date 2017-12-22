@@ -1,0 +1,28 @@
+
+<template name="layout">
+  <div class="container">
+    {{>header}}
+    {{> errors}}
+    <div id="main">
+        {{> yield}}
+    </div>
+  </div>
+</template>
+<!--
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+  {{> lecteur_video}}
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="lecteur_video">
+  <video id="videoPlayer" class="fullscreen">
+    <source src={{url}} type="video/mp4">
+  </video>
+</template> -->
