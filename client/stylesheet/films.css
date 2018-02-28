@@ -8,13 +8,20 @@
   border: 1px solid black;
   display: inline-block;
   position: relative;
+  width: 80vw;
+  
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .videoPlayer-choix{
   position: absolute;
       left: 0px;
       top : 45%;
-      margin: 5%;
+      margin: 8%;
+      margin-top: 13%;
       padding: 25px 25px;
       font-size: 20px;
       font-family: Helvetica;
@@ -22,13 +29,31 @@
       min-height: 30%;
       min-width: 85%;
       background-color: rgba(50, 50, 50, 0.3);
+      z-index: 999;
+
+
 }
 
 .videoPlayer-bloc-question{
   min-width: 70%;
   height: 80%;
-  margin-bottom: 20%;
+  margin-bottom: 8%;
   border: blue solid 1px;
+  font-size: 1.2em;
+}
+
+.vplayer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 900 ;
+  }
+
+.active-button{
+  background-color: blue;
+
 }
 
 .videoPlayer-question{
@@ -39,11 +64,13 @@
   border: purple solid 1px;
   display: flex;
   flex-direction: row;
+  margin-top: 10%
 }
 
 .videoPlayer-reponse{
   border: green solid 1px;
   margin: 0 auto;
+  padding: 9px
 }
 
 .videoPlayer-reponse:hover{

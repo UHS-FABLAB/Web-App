@@ -5,7 +5,18 @@ Template.filmPage.helpers({
 });
 
 
+Template.filmPage.events({
+  'click .videoPlayer-reponse': function (e) {
+    console.log()
+    $('.active-button').removeClass('active-button')
+    $(e.currentTarget).addClass('active-button')
+  //  $(this).addClass('.active-button')
+    console.log("You pressed the button");
+  }
+})
 
+var barLoader;
+var wait = true;
 // Vidéo actuelle
 var current = 2
 // Statut de la vidéo
@@ -77,18 +88,22 @@ function loadWebGLGame(url){
 
 function loadNVP (id) {
 
-  let newVideo = $('<video class="fullscreen" id="videoPlayer'+id+'" ><source src="http://localhost:3000/video/aGrgrTe9BRbKhtMFc/'+id+'" type="video/mp4"></video>');
+  let newVideo = $('<video class="fullscreen" id="videoPlayer'+id+'" ><source id="SourceVd" src="http://localhost:3000/video/aGrgrTe9BRbKhtMFc/'+id+'" type="video/mp4"></video>');
 console.log('oko')
-  setTimeout(function () {
-   $('body').append(newVideo);
+//  setTimeout(function () {
+   $('.vplayer').append(newVideo);
    $('#videoPlayer'+current+'').remove();
    $('#webGL').remove()
    newVideo.show();
+   $('.videoPlayer-choix').hide()
    $('video').each( function () {
      this.play();
    });
+   $('div').find('#myLoader').width('0px')
+    wait = true;
+   barLoader()
    current = id
-  }, 3000);
+  //}, 3000);
 }
 
   var launchTime = "";
@@ -106,12 +121,17 @@ console.log('oko')
 
     // get seconds
     actual = timeDiff % 60;
-    console.log('actual :', actual)
+  //  console.log('actual :', actual)
 
     return actual;
   }
 
 $(document).ready(function(){
+
+  $('videoPlayer-reponse').click(function () {
+
+    alert('ok')
+  })
 
   function findSize(el, size) {
     //console.log(getComputedStyle(el[0],null))
@@ -120,27 +140,28 @@ $(document).ready(function(){
           ? getComputedStyle(el[0],null).getPropertyValue(size)
           : el[0]['client'+size.substr(0,1).toUpperCase() + size.substr(1)] + 'px';
   }
-  var wait = true;
-  function loadBAR(){
 
-    if(launchTime == ""){
-      launchTime = new Date();
-    }
+  barLoader = function(){
 
+    launchTime = new Date();
+    console.log('ok')
+     $('.videoPlayer-choix').show()
     var wdthActu = findSize($('.videoPlayer-bloc-loader').find('.loader-line'), 'width');
     var wdthPxPar = findSize($('.videoPlayer-bloc-loader'), 'width');
 
     wdthPxPar = Math.round(parseFloat(wdthPxPar.split('px')[0]))
     if(parseFloat(wdthActu.split('px')[0]) < wdthPxPar){
+      console.log('pl', wait)
       if(wait){
-        console.log(wdthPxPar)
-        console.log('wait')
+        console.log('wait passed')
+    //    console.log(wdthPxPar)
+    //    console.log('wait')
         actual = elapsedTime();
         wait = false;
-        getProgress(actual,10,wdthPxPar);
+        getProgress(actual,20,wdthPxPar);
       }
     }else{
-      console.log('inferior values : ', parseFloat(wdthActu.split('px')[0]) < parseFloat(wdthPxPar.split('px')[0]))
+     console.log('inferior values : ', parseFloat(wdthActu.split('px')[0]) < parseFloat(wdthPxPar.split('px')[0]))
     }
 
   }
@@ -148,40 +169,70 @@ $(document).ready(function(){
   function getProgress(actual,timeSet,wdthPxPar){
     actual = elapsedTime()
     actWdt = $('div').find('#myLoader').width();
-    console.log(actWdt)
-    console.log(actual,actWdt)
+  //  console.log(actWdt)
+  //  console.log(actual,actWdt)
     if(actWdt < wdthPxPar){
       // px/s = pixels max / temps max
       pxByS = wdthPxPar/timeSet
 
       //1px ttes les x secondes => 1/pxByS
       var sForPx = 1/pxByS
-        console.log(pxByS, sForPx*1000);
+    //    console.log(pxByS, sForPx);
        var remainder = actual % sForPx;
      // console.log(remainder, pxByS, actual,sForPx)
     //   if (remainder == 0){
         //console.log($('div').find('#myLoader'),dt,$(dt).width());
         //actWdt = Math.round(actWdt / wdthPxPar * 100)
-        console.log('wdt',actWdt,'pxbs', pxByS/100,'wdtmax', wdthPxPar)
+        // console.log('wdt',actWdt,'pxbs', pxByS/100,'wdtmax', wdthPxPar)
         actWdt = actWdt+1
-        console.log(actWdt);
+        // console.log(actWdt);
         $('div').find('#myLoader').width('' + actWdt+ 'px')
-        console.log('act wdth :', $('div').find('#myLoader').width())
+        // console.log('act wdth :', $('div').find('#myLoader').width())
   //    }
       setTimeout(function(){
-        console.log(sForPx,actual,wdthPxPar);
+        // console.log(sForPx,actual,wdthPxPar);
         actual = elapsedTime()
-        getProgress(actual,10,wdthPxPar)
-      }, sForPx*1000);
+        getProgress(actual,20,wdthPxPar)
+      }, sForPx*100);
     }else{
       actual = elapsedTime()
       console.log('fin ',actual)
+      // Recpu réponse depuis serveur
+
+      $("#SourceVd").onload = function() {
+          console.log( this.src );
+      }
+
+      //envoi nextid au serveur
+      //redirectotoroute avec id
+
+
+      var stri = $('#videoPlayer'+current+"").find('source').attr('src');
+      //console.log()
+      strFine = stri.substring(0,stri.lastIndexOf('/')+1);
+      console.log(strFine)
+
+      // Selon la value du bouton (vid_id || wgl_id )
+      // switch
+      // loadNVP ou loadWebGLGame
+
+      loadNVP($('.videoPlayer-reponses').find('.active-button').attr('value'))
+
+      // créer le template de questionnaire
+      // Lors du load préparer le questionnaire
+      // Charger le template avec les questions et les values ( foreach )
+      // Au sein du inner fullscreen append en display none
+      // réinitialiser les Controles boutons
+
+
+
+
     }
   }
 
   setTimeout(function(){
     console.log('go');
-  loadBAR()
+  barLoader()
 }, 1000);
 
 
