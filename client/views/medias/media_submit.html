@@ -1,4 +1,4 @@
-<template name="mediaSubmit">
+<!-- <template name="mediaSubmit">
   <form name="comment" class="comment-form form">
     <div class="form-group {{errorClass 'body'}}">
       <div class="controls">
@@ -9,4 +9,104 @@
     </div>
     <button type="submit" class="btn btn-primary">Add Comment</button>
   </form>
+</template> -->
+
+
+<template name="mediaSubmit">
+  <div class='film_add_elements'>
+      <div class='film_modif_ajout_onglets'>
+          <div class='onglet onglet_actif onglet_add'>
+              <i class="fa fa-television" aria-hidden="true"></i>
+              <p style="cursor:pointer;">Ajout de média</p>
+          </div>
+          <div class='onglet onglet_modif'>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <p style="cursor:pointer;">Modifier</p>
+          </div>
+      </div>
+      <div class="contenu_onglet contenu_onglet_add contenu_onglet_actif">
+          <div class='film_add_elements_onglets'>
+              <div class='film_add_video_onglet film_add_onglet_actif'>
+                  <i class="fa fa-circle" aria-hidden="true"></i>
+                  <span class="ajout_video">Vidéo</span>
+              </div>
+              <div class='film_add_jeuvideo_onglet'>
+                  <i class="fa fa-circle" aria-hidden="true"></i>
+                  <span class="ajout_video">Jeu Vidéo</span>
+              </div>
+          </div>
+          <div class="contenu_add_elem">
+              <div class="film_add_video film_add_elem_active">
+                  <div class="film_add_elements_ajout_title">
+                      <i class="fa fa-tags" aria-hidden="true"></i>
+                      <input type="text" id="titre_film" value="" class="ajout_title" placeholder=" Titre du film"/><span class="error_film" style="color:red;font-family: Calibri;font-size:12px;margin-left:5px;"></span>
+                  </div>
+
+                  <div class="film_add_elements_ajout_folder">
+                      <i class="fa fa-folder-open" aria-hidden="true"></i>
+                      <input style="margin-left: 16px" id="fileupload" type="file" name="files[]" multiple="">
+                  </div>
+
+                  <div class="film_add_elements_ajout_describe">
+                      <i class="fa fa-info-circle" aria-hidden="true"></i>
+                      <textarea class="ajout_description" id="description_film" placeholder="Description du film (facultatif)"></textarea>
+                  </div>
+
+                  <div class="element_validate">
+                      <i class="fa fa-plus" aria-hidden="true">
+                          <span class="ajouter_text" id="testclick"> Ajouter</span>
+                      </i>
+                  </div>
+              </div>
+
+              <div class="film_add_jeuvideo">
+                  <div class="film_add_elements_ajout_title">
+                      <i class="fa fa-tags" aria-hidden="true"></i>
+                      <input type="text" id="titre_jeu" value="" class="ajout_title" placeholder=" Titre du film" /><span class="error_jeu" style="color:red;font-family: Calibri;font-size:12px;margin-left:5px;"></span>
+                  </div>
+
+                  <div class="film_add_elements_ajout_folder">
+                      <i class="fa fa-folder-open" aria-hidden="true"></i>
+                      <input style="margin-left: 16px" id="fileupload" type="file" name="files[]" multiple="">
+                  </div>
+
+                  <div class="film_add_elements_ajout_describe">
+                      <i class="fa fa-info-circle" aria-hidden="true"></i>
+                      <textarea class="ajout_description" id="description_jeu" value="" placeholder="Description du jeu (facultatif)"></textarea>
+                  </div>
+
+                  <div class="element_validate">
+                      <i class="fa fa-plus" aria-hidden="true">
+                          <span class="ajouter_text" id="click_jeu" > Ajouter</span>
+                      </i>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="contenu_onglet contenu_onglet_modif">
+          <p style="font-family: Calibri;text-align: center;margin-top:0px;">Sélectionnez un média à modifier</p>
+          <div class="film_add_elements_ajout_title">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              <input type="text" id="media_modif_title" value="" class="ajout_title" placeholder=" Titre" />
+          </div>
+
+          <div class="film_add_elements_ajout_folder">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+              <button style="margin-left: 22px;" type="submit">Supprimer le média</button>
+          </div>
+
+          <div class="film_add_elements_ajout_describe">
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+              <textarea class="ajout_description" id="media_modif_describ" value="" placeholder="Description..."></textarea>
+          </div>
+
+          <div class="element_validate">
+              <i class="fa fa-check fa-check-elem" aria-hidden="true">
+                  <span class="valider_text">Valider</span>
+              </i>
+          </div>
+      </div>
+
+  </div>
 </template>

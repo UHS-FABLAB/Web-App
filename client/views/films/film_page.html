@@ -2,12 +2,12 @@
   <div class="film-page page">
     {{> filmItem}}
     <ul class="sequences">
-    {{#each sequences}}
-      {{> sequenceItem}}
+    {{#each medias}}
+      {{> mediaItem}}
     {{/each}}
   </ul>
   {{#if currentUser}}
-    {{> sequenceSubmit}}
+    {{> mediaSubmit}}
   {{else}}
     <p>Please log in to leave a comment.</p>
   {{/if}}

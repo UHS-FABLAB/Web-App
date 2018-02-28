@@ -1,4 +1,4 @@
-<template name="mediaItem">
+<!-- <template name="mediaItem">
   <li>
     <h4>
       <span class="author">{{author}}</span>
@@ -6,4 +6,14 @@
     </h4>
     <p>{{body}}</p>
   </li>
+</template> -->
+
+<template name="mediaItem">
+    <div class='film_added_element draggable'>
+        <div class='film_element_img'>
+          <img class='film_element_img_image' src='/img/exemple_video.png'>
+        </div>
+        <div class='film_element_titre'>{{title}}</div>
+        <div class='film_element_data'>{{duree}}</div>
+    </div>
 </template>

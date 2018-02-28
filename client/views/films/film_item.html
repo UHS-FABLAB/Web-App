@@ -1,7 +1,7 @@
 <template name="filmItem">
-  <div class="film rTableRow rTableRow-Films film-content">
+  <div class="rTableRow rTableRow-Films film-content">
       <div class="rTableCell rTableCell-Films">
-        <h3 ><a href="{{url}}">{{title}}</a><span>url : {{domain}}</span></h3>
+        <h3 ><a href="{{pathFor 'filmManager'}}">{{title}}</a><span>description : {{description}}</span></h3>
         Rédigé par {{author}},
       </div>
       <div class="rTableCell rTableCell-Films">

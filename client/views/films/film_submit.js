@@ -16,12 +16,12 @@ Template.filmSubmit.events({
     e.preventDefault();
 
     var film = {
-      url: $(e.target).find('[name=url]').val(),
+      description: $(e.target).find('[name=description]').val(),
       title: $(e.target).find('[name=title]').val()
     };
 
     var errors = validateFilm(film);
-    if (errors.title || errors.url)
+    if (errors.title || errors.description)
       return Session.set('filmSubmitErrors', errors);
 
     Meteor.call('filmInsert', film, function(error, result) {

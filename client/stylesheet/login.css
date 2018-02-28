@@ -1,0 +1,224 @@
+/* Propriétés CSS de la page INDEX */
+
+
+html,body{
+	margin : 0!important;
+	height: 100%;
+}
+
+.banderolle{
+	height: 15px;
+	display: block;
+}
+
+.couleur{
+	width: 25%;
+	height: inherit;
+	margin: 0;
+	display: inline-block;
+	white-space: initial;
+	float: left;
+}
+
+.couleur1{
+	background-color: #FDC31A;
+}
+
+.couleur2{
+	background-color: #F28E2B;
+}
+
+.couleur3{
+	background-color: #15A8A5;
+}
+
+.couleur4{
+	background-color: #C0D23F;
+}
+
+.titre{
+ 	font-size: 230%;
+ 	margin-top: 5%;
+ 	text-align: center;
+ 	font-family: "Roboto";
+}
+
+.connect_container{
+	position: relative;
+	display: block;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 7%;
+	font-family: "Roboto";
+	border: 3px solid #15A8A5;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.loading_gif{
+	margin-top: 2%;
+	position: absolute;
+	top: 20%;
+	width: 50%;
+	left: 25%;
+	display: none;
+}
+
+.loading_gif > img{
+	position: relative;
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+.connect_titre{
+	position: relative;
+	font-size: 170%;
+	text-align: center;
+	display: block;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	color: white;
+	font-weight: 700;
+	background-color: #15A8A5;
+	margin-bottom: 7%;
+}
+
+.connect_titre > *{
+	display: inline-block;
+}
+
+.connect_img{
+	width: 40px;
+	height: 40px;
+	padding-right: 5%;
+	vertical-align: middle;
+}
+
+.connect_titre_text{
+	vertical-align: middle;
+}
+
+.connect_input{
+	position: relative;
+	display: block;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.connect_img_container{
+	position: relative;
+	vertical-align: middle;
+	text-align: center;
+	display: inline-block;
+	background-color: white;
+	height: 30px;
+	width: 30px;
+	border-left: 2px solid #F28E2B;
+	border-top: 2px solid #F28E2B;
+	border-bottom: 2px solid #F28E2B;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+.connect_input_img{
+	position: relative;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2px;
+	height: 25px;
+	width: 25px;
+}
+
+.connect_input > input{
+	display: inline-block;
+	vertical-align: top;
+	width: 80%;
+	height: 28px;
+	margin-bottom: 10px;
+	border: 2px solid #F28E2B;
+	padding-left: 5px;
+}
+
+.connect_error{
+	display: block;
+	position: relative;
+	opacity: 0;
+	text-align: center;
+	font-size: 90%;
+	color: #f45942;
+	max-height: 0;
+	height: auto;
+	font-weight: 900;
+	-webkit-transition: all 1.2s ease-out;
+  	-moz-transition: all 1.2s ease-out;
+  	-o-transition: all 1.2s ease-out;
+  	transition: all 1.2s ease-out;
+}
+
+.connect_error_active{
+	opacity: 1;
+	max-height: 200px;
+}
+
+.connect_button{
+	display: block;
+	position: relative;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+
+.connect_inner_button{
+	display: block;
+	position: relative;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 4%;
+	padding-right: 4%;
+	cursor: pointer;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	border: solid 2px #F28E2B;
+	border-radius: 15px;
+	color: #F28E2B;
+	font-size: 130%;
+	font-weight: 900;
+}
+
+
+.sous-titre {
+	position: relative;
+	display: block;
+    font-size: 35%;
+    font-weight: 600;
+}
+
+
+.st_1{
+    color: #f59c68;
+    margin-right: 1.5%;
+}
+
+.st_2{
+    color: #55cadf;
+    margin-right: 1.5%;
+}
+
+.st_3{
+    color: #cfd759;
+    margin-right: 1.5%;
+}
+
+.st_4{
+    color: #fed46c;
+    margin-right: 1.5%;
+}
+
+.st_5{
+    color: #f2a162;
+}
