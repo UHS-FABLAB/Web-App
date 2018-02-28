@@ -4,7 +4,11 @@
     {{>header}}
     {{> errors}}
     <div id="main">
+      {{#unless currentUser}}
+        {{> loginPage}}
+       {{else}}
         {{> yield}}
+      {{/unless}}
     </div>
   </div>
 </template>
