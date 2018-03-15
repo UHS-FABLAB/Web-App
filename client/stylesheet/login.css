@@ -1,7 +1,7 @@
 /* Propriétés CSS de la page INDEX */
 
 
-html,body{
+html, body, .body-film-manager{
 	margin : 0!important;
 	height: 100%;
 }

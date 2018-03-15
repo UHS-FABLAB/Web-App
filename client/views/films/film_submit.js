@@ -36,6 +36,9 @@ Template.filmSubmit.events({
       //  Router.go('filmPage', {_id: result._id});
     });
 
-    Router.go('filmsList');
+    Blaze.remove(Blaze.currentView)
+  },
+  'click i.fa.fa-times.fa-times-close': function(e) {
+    Blaze.remove(Blaze.currentView)
   }
 });

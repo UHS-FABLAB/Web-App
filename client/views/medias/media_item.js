@@ -3,3 +3,8 @@ Template.mediaItem.helpers({
     return this.submitted.toString();
   }
 });
+
+Template.mediaSubmit.helpers({
+
+
+})

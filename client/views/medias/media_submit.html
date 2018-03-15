@@ -22,21 +22,24 @@
           <div class='onglet onglet_modif'>
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               <p style="cursor:pointer;">Modifier</p>
+
           </div>
       </div>
       <div class="contenu_onglet contenu_onglet_add contenu_onglet_actif">
           <div class='film_add_elements_onglets'>
-              <div class='film_add_video_onglet film_add_onglet_actif'>
+              <div class='film_add_video_onglet film_add_radio film_add_onglet_actif'>
                   <i class="fa fa-circle" aria-hidden="true"></i>
                   <span class="ajout_video">Vidéo</span>
               </div>
-              <div class='film_add_jeuvideo_onglet'>
+              <div class='film_add_jeuvideo_onglet film_add_radio'>
                   <i class="fa fa-circle" aria-hidden="true"></i>
                   <span class="ajout_video">Jeu Vidéo</span>
               </div>
           </div>
           <div class="contenu_add_elem">
+
               <div class="film_add_video film_add_elem_active">
+                <form>
                   <div class="film_add_elements_ajout_title">
                       <i class="fa fa-tags" aria-hidden="true"></i>
                       <input type="text" id="titre_film" value="" class="ajout_title" placeholder=" Titre du film"/><span class="error_film" style="color:red;font-family: Calibri;font-size:12px;margin-left:5px;"></span>
@@ -44,7 +47,8 @@
 
                   <div class="film_add_elements_ajout_folder">
                       <i class="fa fa-folder-open" aria-hidden="true"></i>
-                      <input style="margin-left: 16px" id="fileupload" type="file" name="files[]" multiple="">
+                      <input style="margin-left: 16px" id="upload_film" type="file" name="files[]" multiple="">
+                      <span id='film_duration'></span>
                   </div>
 
                   <div class="film_add_elements_ajout_describe">
@@ -54,33 +58,36 @@
 
                   <div class="element_validate">
                       <i class="fa fa-plus" aria-hidden="true">
-                          <span class="ajouter_text" id="testclick"> Ajouter</span>
+                          <input type='submit'  class="ajouter_text" id="testclick" value="Ajouter">
                       </i>
                   </div>
+                  </form>
               </div>
 
-              <div class="film_add_jeuvideo">
-                  <div class="film_add_elements_ajout_title">
-                      <i class="fa fa-tags" aria-hidden="true"></i>
-                      <input type="text" id="titre_jeu" value="" class="ajout_title" placeholder=" Titre du film" /><span class="error_jeu" style="color:red;font-family: Calibri;font-size:12px;margin-left:5px;"></span>
-                  </div>
+              <!-- <div class="film_add_jeuvideo">
+                  <form>
+                    <div class="film_add_elements_ajout_title">
+                        <i class="fa fa-tags" aria-hidden="true"></i>
+                        <input type="text" id="titre_jeu" value="" class="ajout_title" placeholder=" Titre du film" /><span class="error_jeu" style="color:red;font-family: Calibri;font-size:12px;margin-left:5px;"></span>
+                    </div>
 
-                  <div class="film_add_elements_ajout_folder">
-                      <i class="fa fa-folder-open" aria-hidden="true"></i>
-                      <input style="margin-left: 16px" id="fileupload" type="file" name="files[]" multiple="">
-                  </div>
+                    <div class="film_add_elements_ajout_folder">
+                        <i class="fa fa-folder-open" aria-hidden="true"></i>
+                        <input style="margin-left: 16px" id="fileupload" type="file" name="files[]" multiple="">
+                    </div>
 
-                  <div class="film_add_elements_ajout_describe">
-                      <i class="fa fa-info-circle" aria-hidden="true"></i>
-                      <textarea class="ajout_description" id="description_jeu" value="" placeholder="Description du jeu (facultatif)"></textarea>
-                  </div>
+                    <div class="film_add_elements_ajout_describe">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <textarea class="ajout_description" id="description_jeu" value="" placeholder="Description du jeu (facultatif)"></textarea>
+                    </div>
 
-                  <div class="element_validate">
-                      <i class="fa fa-plus" aria-hidden="true">
-                          <span class="ajouter_text" id="click_jeu" > Ajouter</span>
-                      </i>
-                  </div>
-              </div>
+                    <div class="element_validate">
+                        <i class="fa fa-plus" aria-hidden="true">
+                            <input type='submit'  class="ajouter_text" id="click_jeu" value="Ajouter">
+                        </i>
+                    </div>
+                  </form>
+              </div> -->
           </div>
       </div>
 
@@ -103,7 +110,7 @@
 
           <div class="element_validate">
               <i class="fa fa-check fa-check-elem" aria-hidden="true">
-                  <span class="valider_text">Valider</span>
+                  <input type='submit' class="valider_text" value="Valider">
               </i>
           </div>
       </div>
