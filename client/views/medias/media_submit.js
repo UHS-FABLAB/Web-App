@@ -4,34 +4,55 @@ Template.mediaSubmit.onCreated(function() {
 
 
 
+
 var videoDuration = 0;
+var uploadFileAfterInsert = function(_idMedia){
+  var fileUploader = $('#upload_film')[0];
+  var fileId = "";
+  if (fileUploader.files && fileUploader.files[0]) {
+    // We upload only one file, in case
+    // there was multiple files selected
+    var file = fileUploader.files[0];
+    if (file) {
+      var uploadObject = {
+        file: file,
+        streams: 'dynamic',
+        chunkSize: 'dynamic',
+      }
+
+      var uploadInstance = Files.insert(uploadObject, false);
+      console.log(this, Template.instance())
+
+
+      uploadInstance.on('start', function() {
+        console.log(fileUploader)
+        //this.currentUpload.set(this);
+      });
+
+      uploadInstance.on('end', function(error, fileObj) {
+        if (error) {
+          window.alert('Error during upload: ' + error.reason);
+        } else {
+          console.log(fileObj)
+
+          // update the post with the number of comments
+          Medias.update(media.fileId, {$set: {fileId: fileObj.id}});
+
+          window.alert('File "' + fileObj.name + '" successfully uploaded');
+        }
+        //this.currentUpload.set(false);
+      });
+
+      uploadInstance.start();
+    }
+  }
+}
+
 
 Template.mediaSubmit.rendered = function(evt, instance) {
 
 
-  window.URL = window.URL || window.webkitURL;
-  document.getElementById('upload_film').onchange = setFileInfo;
 
-  function setFileInfo() {
-    var files = this.files;
-    var video = document.createElement('video');
-    video.preload = 'metadata';
-
-    video.onloadedmetadata = function() {
-      window.URL.revokeObjectURL(video.src);
-      var duration = video.duration;
-      videoDuration = duration;
-      updateInfos();
-    }
-
-    video.src = URL.createObjectURL(files[0]);;
-  }
-
-
-  function updateInfos() {
-    var infos = document.getElementById('film_duration');
-    infos.innerHTML = videoDuration.toFixed(2) + 's.';
-  }
 }
 
 Template.mediaSubmit.helpers({
@@ -78,6 +99,8 @@ Template.mediaSubmit.events({
           console.log(error)
           throwError(error.reason);
         } else {
+          console.log(mediaId)
+          uploadFileAfterInsert(mediaId)
           $('#titre_film').val('');
           $('#description_film').val('');
           $('#upload_film').val('');
@@ -85,12 +108,15 @@ Template.mediaSubmit.events({
       });
     } else {
       media._id = $('.film_add_elements').attr('id')
-      console.log(media, this)
+
       Meteor.call('mediaUpdate', media, function(error, mediaId) {
         if (error){
           console.log(error)
           throwError(error.reason);
         } else {
+          uploadFileAfterInsert(media._id)
+
+
           $('#titre_film').val('');
           $('#description_film').val('');
           $('#upload_film').val('');
