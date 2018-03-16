@@ -1,0 +1,10 @@
+<template name="uploadForm">
+  {{#with currentUpload}}
+    Uploading <b>{{file.name}}</b>:
+    <span id="progress">{{progress.get}}%</span>
+  {{else}}
+  <i class="fa fa-folder-open" aria-hidden="true"></i>
+  <input style="margin-left: 16px" id="upload_film" type="file" name="files[]" multiple="">
+  <span id='film_duration'></span>
+  {{/with}}
+</template>
