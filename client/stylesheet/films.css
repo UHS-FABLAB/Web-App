@@ -287,6 +287,7 @@
 .film_details_container{
   width: 100%;
   height: calc(100% - 60px);
+=======
   background-color: white;
   margin-top: -4px;/*permet de coller le conteneur aux onglets de films*/
 }
