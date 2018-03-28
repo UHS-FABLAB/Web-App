@@ -20,30 +20,36 @@
 
 
 <template name="filmSubmit">
-  <div class="onglet_ajout--film">
+  <div class="popup_ajout--film">
     <form class="main form page">
       <i class="fa fa-times fa-times-close" aria-hidden="true"></i>
-      <h3 class='onglet_ajout_film_titre'>Création d'un nouveau film</h3>
-      <div class="onglet_ajout_film">
+      <h3 class='popup_ajout_film_titre'>Création d'un nouveau film</h3>
+      <div class="popup_ajout_film">
+        <div class='popup_ajout_img_container'>
+          <span class='popup_ajout_img'><img src='/img/app_photo.png'></span>
+        </div>
+        <div class='popup_form_group_container'>
         <div class="form-group {{errorClass 'title'}}">
-          <span class='onglet_ajout_img'><img src='/img/app_photo.png'></span>
-          <span class='onglet_ajout_label'>
-            <label class="control-label" for="title">Titre</label>
+          <span class='popup_ajout_label'>
+            <label class="control-label" for="title"><span>Titre</span></label>
             <div class="controls">
-              <span><input type="text" class="onglet_ajout_film--input-title" name="title" id="title" value="{{title}}" placeholder="Titre du film" /></span>
+              <span><input type="text" class="popup_ajout_film--input-title" name="title" id="title" value="{{title}}" placeholder="Titre du film" /></span>
               <span class="help-block">{{errorMessage 'title'}}</span>
             </div>
           </span>
         </div>
         <div class="form-group {{errorClass 'description'}}">
-          <label class="control-label" for="description">Synopsis</label>
-          <div class="controls">
-            <span><textarea type="text" class="onglet_ajout_film--input-description" name="description" id="description" value="{{description}}" placeholder="Synopsis du film" ></textarea></span>
-            <span class="help-block">{{errorMessage 'description'}}</span>
-          </div>
+          <span class='popup_ajout_label'>
+            <label class="control-label" for="description"><span>Synopsis</span></label>
+            <div class="controls">
+              <span><textarea type="text" class="onglet_ajout_film--input-description" name="description" id="description" value="{{description}}" placeholder="Synopsis du film" ></textarea></span>
+              <span class="help-block">{{errorMessage 'description'}}</span>
+            </div>
+          </span>
         </div>
       </div>
-      <i class="fa fa-check fa-check-v" aria-hidden="true"><input type="submit" value="Submit" class="valider_text_film submit"/></i>
+      </div>
+      <i class="fa fa-check fa-check-v" aria-hidden="true"><input type="submit" value="Valider" class="valider_text_film submit"/></i>
     </form>
   </div>
 </template>

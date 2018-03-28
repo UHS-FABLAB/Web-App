@@ -24,4 +24,4 @@ accounts-ui
 accounts-password
 check
 aldeed:simple-schema
-email
+ostrio:files

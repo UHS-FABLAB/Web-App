@@ -5,6 +5,18 @@ Template.filmManager.helpers({
 });
 
 
+Template.filmManager.onRendered(function () {
+  idFilm = this.data._id
+  console.log(idFilm, this)
+  $.each($('div.film'), function() {
+    console.log( ($(this).attr('id').indexOf(idFilm) > -1), $(this).attr('id'), idFilm)
+    if($(this).attr('id').indexOf(idFilm) > -1){
+      console.log('okaa')
+      $(this).addClass('onglet_film_actif')
+    }
+  })
+})
+
 Template.filmManager.events({
   'click .film_added_element': function(e, template){
     e.preventDefault();
