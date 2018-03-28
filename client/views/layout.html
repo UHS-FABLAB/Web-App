@@ -5,10 +5,14 @@
     {{> errors}}
     <div id="main">
       {{#unless currentUser}}
+        <div id="login_div">
         {{> loginPage}}
-        <!-- {{> registerPage}} -->
+        </div>
+        <div id="register_div" class="register_display" >
+            {{> registerPage}}
+        </div>
       {{else}}
-        {{> yield}}
+        {{> filmsList}}
       {{/unless}}
     </div>
   </div>

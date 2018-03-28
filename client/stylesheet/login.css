@@ -43,6 +43,10 @@ html, body, .body-film-manager{
  	font-family: "Roboto";
 }
 
+.register_display{
+	display: none;
+}
+
 .connect_container{
 	position: relative;
 	display: block;

@@ -9,14 +9,18 @@
 		  <div class='connect_button'><input type='submit' value='Connexion' class='connect_inner_button'></div>
     </form>
 	</div>
-	<div class='loading_gif'><img src='/img/check-gif.gif' ></div>
+    <div class='loading_gif'><img src='/img/check-gif.gif' ></div>
+    <div class='connect_button'><input  onclick="displayLogin()"  value="S'inscrire" class='connect_inner_button'></div>
+
+    <script>
+    function displayLogin() {
+    var x = document.getElementById("login_div");
+    x.style.display = "none";
+
+    var y = document.getElementById("register_div");
+    y.style.display = "block";
+    } 
+    </script>
 
 
-<!--
-
-  <form>
-      <input type="email" name="loginEmail">
-      <input type="password" name="loginPassword">
-      <input type="submit" value="Login">
-  </form> -->
 </template>
