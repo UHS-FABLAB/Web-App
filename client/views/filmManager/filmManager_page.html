@@ -11,35 +11,35 @@
             </div>
             <div class="add_film"><img class="add_film" src='/img/add_icon.png'></div>
         </div>
-    </div>
 
-    <div class='film_details_container'>
-        <div class='film_details'>
-            <div class='film_modif_container'>
-                <div class='film_details_container_left'>
-                    <!--  TODO: Ajouter le template de modof/ creation de media-->
-                    {{> mediaSubmit}}
-                </div>
+        <div class='film_details_container'>
+            <div class='film_details'>
+                <div class='film_modif_container'>
+                    <div class='film_details_container_left'>
+                        <!--  TODO: Ajouter le template de modof/ creation de media-->
+                        {{> mediaSubmit}}
+                    </div>
 
-                <div class='film_details_container_right'>
-                    <div class='film_connexion_structure'></div>
-                    <div class='film_launch'>
-                        <img src='/img/play.png'>
+                    <div class='film_details_container_right'>
+                        <div class='film_connexion_structure'></div>
+                        <div class='film_launch'>
+                            <img src='/img/play.png'>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class='film_list_added_elements'>
-                <div class='arrow_button_list_added arrow_button_left'>
-                    <img src='/img/arrow_left.png'>
-                </div>
-                <div class='film_list_container'>
-                  {{#each medias}}
-                    {{> mediaItem}}
-                  {{/each}}
-                    <!-- TODO: Ajouter le foreach mediaItem + template -->
-                </div>
-                <div class='arrow_button_list_added arrow_button_right'>
-                    <img src='/img/arrow_right.png'>
+                <div class='film_list_added_elements'>
+                    <div class='arrow_button_list_added arrow_button_left'>
+                        <img src='/img/arrow_left.png'>
+                    </div>
+                    <div class='film_list_container'>
+                      {{#each medias}}
+                        {{> mediaItem}}
+                      {{/each}}
+                        <!-- TODO: Ajouter le foreach mediaItem + template -->
+                    </div>
+                    <div class='arrow_button_list_added arrow_button_right'>
+                        <img src='/img/arrow_right.png'>
+                    </div>
                 </div>
             </div>
         </div>
