@@ -125,14 +125,19 @@ Template.mediaSubmit.events({
     }
 
   },
+  /*manage video or game tabs*/
   'click .film_add_radio': function(e, template){
     console.log(e.currentTarget)
     if($(e.currentTarget).hasClass('film_add_video_onglet')){
       $('div.film_add_video_onglet').addClass('film_add_onglet_actif');
       $('div.film_add_jeuvideo_onglet').removeClass('film_add_onglet_actif');
+      $('div.film_add_video').addClass('film_add_elem_active');
+      $('div.film_add_jeuvideo').removeClass('film_add_elem_active');
     } else {
       $('div.film_add_video_onglet').removeClass('film_add_onglet_actif');
       $('div.film_add_jeuvideo_onglet').addClass('film_add_onglet_actif');
+      $('div.film_add_jeuvideo').addClass('film_add_elem_active');
+      $('div.film_add_video').removeClass('film_add_elem_active');
     }
 
 
