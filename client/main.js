@@ -12,8 +12,14 @@ if (Meteor.isClient) {
             var passwordVar = event.target.registerPassword.value;
             var surnameVar = event.target.registerSurname.value;
             var nameVar = event.target.registerName.value;
+        
+            // Gestion des erreurs : 
+            var error_message = document.getElementById("connect_error_register");
+            if(!emailVar || !passwordVar || !surnameVar || !nameVar || surnameVar.replace(/\s/g,'').length == 0 || nameVar.replace(/\s/g,'').length == 0){
+                error_message.innerHTML = "Veuillez remplir correctement tous les champs."
+                error_message.style.opacity = "100";
 
-            console.log("Form register submitted.");
+            }else {
 
             Accounts.createUser({
                 email: emailVar,
@@ -28,27 +34,32 @@ if (Meteor.isClient) {
                     Meteor.call('sendVerificationLink',(error,response) => {
                         if (error){
                             console.log(error);
-                        }else {
-                            console.log("mail send");
                         }
                     })
                 }
             });
+        }
     }});
 
 
 
 
-
+    
 
     Template.loginPage.events({
       'submit form': function(event) {
+
           event.preventDefault();
           var emailVar = event.target.loginEmail.value;
           var passwordVar = event.target.loginPassword.value;
-          Meteor.loginWithPassword(emailVar, passwordVar);
-          // Redirection
-          console.log("Form login submitted.");
+          Meteor.loginWithPassword(emailVar, passwordVar, (error) => {
+              if (error.error == '403'){
+              var messageErreur = document.getElementById("connect_error");
+                messageErreur.style.opacity = "100";
+            
+            }
+          });
+
       }
     });
 
