@@ -141,29 +141,31 @@ $(document).ready(function(){
           : el[0]['client'+size.substr(0,1).toUpperCase() + size.substr(1)] + 'px';
   }
 
-  barLoader = function(){
+  if ($('#videoPlayer').length > 0) {
+    barLoader = function(){
 
-    launchTime = new Date();
-    console.log('ok')
-     $('.videoPlayer-choix').show()
-    var wdthActu = findSize($('.videoPlayer-bloc-loader').find('.loader-line'), 'width');
-    var wdthPxPar = findSize($('.videoPlayer-bloc-loader'), 'width');
+      launchTime = new Date();
+      console.log('ok')
+       $('.videoPlayer-choix').show()
+      var wdthActu = findSize($('.videoPlayer-bloc-loader').find('.loader-line'), 'width');
+      var wdthPxPar = findSize($('.videoPlayer-bloc-loader'), 'width');
 
-    wdthPxPar = Math.round(parseFloat(wdthPxPar.split('px')[0]))
-    if(parseFloat(wdthActu.split('px')[0]) < wdthPxPar){
-      console.log('pl', wait)
-      if(wait){
-        console.log('wait passed')
-    //    console.log(wdthPxPar)
-    //    console.log('wait')
-        actual = elapsedTime();
-        wait = false;
-        getProgress(actual,20,wdthPxPar);
+      wdthPxPar = Math.round(parseFloat(wdthPxPar.split('px')[0]))
+      if(parseFloat(wdthActu.split('px')[0]) < wdthPxPar){
+        console.log('pl', wait)
+        if(wait){
+          console.log('wait passed')
+      //    console.log(wdthPxPar)
+      //    console.log('wait')
+          actual = elapsedTime();
+          wait = false;
+          getProgress(actual,20,wdthPxPar);
+        }
+      }else{
+       console.log('inferior values : ', parseFloat(wdthActu.split('px')[0]) < parseFloat(wdthPxPar.split('px')[0]))
       }
-    }else{
-     console.log('inferior values : ', parseFloat(wdthActu.split('px')[0]) < parseFloat(wdthPxPar.split('px')[0]))
-    }
 
+    }
   }
 
   function getProgress(actual,timeSet,wdthPxPar){
@@ -232,7 +234,9 @@ $(document).ready(function(){
 
   setTimeout(function(){
     console.log('go');
-  barLoader()
+  if (typeof barLoader == 'function') {
+    barLoader()
+  }
 }, 1000);
 
 

@@ -1,0 +1,14 @@
+
+<template name="mediaTest">
+  <div class="onglet_ajout--film" style="width: 60vw; height: 78vh;">
+    {{#if isMediaGame}}
+    <script src="/js/UnityProgress.js"></script>
+    <script src="/js/UnityLoader.js"></script>
+    <iframe src="/webgl/p&c.7z"  width="100%"  height="100%"></iframe>
+    {{else}}
+    <video id="videoPlayer2" class="fullscreen">
+      <source id="SourceVd" src="http://localhost:3000/video/aGrgrTe9BRbKhtMFc/1" type="video/mp4">
+    </video>
+    {{/if}}
+  </div>
+</template>

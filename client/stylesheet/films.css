@@ -4,6 +4,15 @@
   text-align: center;
 }
 
+
+.film-player{
+  background-color: black;
+  width: 100vw !important;
+  height: 100vh !important;
+  position: fixed;
+  top: 0;
+}
+
 .inner-fullscreen{
   border: 1px solid black;
   display: inline-block;
@@ -21,7 +30,7 @@
       left: 0px;
       top : 45%;
       margin: 8%;
-      margin-top: 13%;
+      margin-top: 31%;
       padding: 25px 25px;
       font-size: 20px;
       font-family: Helvetica;
@@ -38,7 +47,8 @@
   min-width: 70%;
   height: 80%;
   margin-bottom: 8%;
-  border: blue solid 1px;
+  color: white;
+  /* border: blue solid 1px; */
   font-size: 1.2em;
 }
 
@@ -53,7 +63,7 @@
 
 .active-button{
   background-color: blue;
-
+  /* border-color: blue; */
 }
 
 .videoPlayer-question{
@@ -61,14 +71,15 @@
 }
 
 .videoPlayer-reponses{
-  border: purple solid 1px;
+  /* border: purple solid 1px; */
   display: flex;
   flex-direction: row;
-  margin-top: 10%
+  margin-top: 10%;
+  color: white;
 }
 
 .videoPlayer-reponse{
-  border: green solid 1px;
+  /* border: green solid 1px; */
   margin: 0 auto;
   padding: 9px
 }
@@ -80,7 +91,7 @@
 .videoPlayer-bloc-loader{
   min-width: 90%;
   height: 4px;
-  border: red solid 1px;
+  border: blue solid 1px;
 }
 
 .loader-line{
@@ -160,7 +171,8 @@
 }
 
 .film_element_img > *{
-    height: 100%;
+    height: 65%;
+    width: 65%
 }
 
 .film_element_titre{
@@ -202,7 +214,7 @@
 .application{
   display: block;
   position: relative;
-  height: calc( 100% - 70px);
+  height: 100%;
 }
 
 .liste_films{
@@ -213,6 +225,10 @@
 }
 
 .film{
+  -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
   position: relative;
   display: inline-block;
   float: left;
@@ -226,14 +242,11 @@
   text-transform: uppercase;
   font-family: Calibri;
   background-color: #f28e2b;
+  color: white;
   text-overflow: ellipsis;
   overflow-y: hidden;
   vertical-align: top;
   border-right: solid 1px white;
-  -webkit-transition: all 0.4s ease-out;
-    -moz-transition: all 0.4s ease-out;
-    -o-transition: all 0.4s ease-out;
-    transition: all 0.4s ease-out;
 }
 .film a{
   text-decoration: none;
@@ -241,6 +254,7 @@
 .onglet_film_actif{
   height: 50px;
   color: white!important;
+  font-weight: 600;
 }
 .liste_films--title{
   
@@ -285,7 +299,7 @@
 
 .film_details_container{
   width: 100%;
-  height: 100%;
+  height: calc(100% - 60px);
   background-color: white;
   margin-top: -4px;/*permet de coller le conteneur aux onglets de films*/
 }
@@ -303,28 +317,30 @@
 .film_details{
   display: block;
   position: relative;
-  height: 90%;
+  height: 100%;
   width: 100%;
 }
 
 .film_modif_container{
   position: relative;
   display: flex;
-  height: 75%;
+  height: 70%;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
 
-}
-
+<<<<<<< HEAD
 .film_list_added_elements{
-  display: flex;
-  position: relative;
-  height: 30%;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #cecece;
+	display: flex;
+  margin-top: 15px;
+	position: relative;
+	height: 30%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #cecece;
+=======
+>>>>>>> b5e29d53ba22b90ee81c1fb392182b9982f63b04
 }
 
 .film_details_container_left{
@@ -410,6 +426,8 @@
 .film_add_elements_onglets {
     display: flex;
     justify-content: space-around;
+    padding-top: 8px;
+    padding-bottom: 6px;
 }
 
 .film_add_elements {
@@ -428,19 +446,7 @@
     flex-direction: column;
 }
 
-.film_add_elements_ajout_title {
-    margin-top: 4px;
-    font-size: 1.5em;
-}
-
-.film_add_elements_ajout_folder{
-    margin-top: 15px;
-    font-size: 1.5em;
-}
-
-.film_add_elements_ajout_describe {
-    margin-top: 0px;
-    margin-bottom: 0px;
+.film_add_elements_ajout_folder,.film_add_elements_ajout_describe,.film_add_elements_ajout_title{
     font-size: 1.5em;
 }
 
@@ -468,12 +474,11 @@
 
 .ajout_description {
     position: relative;
-    margin-top: 17px;
-    margin-left: 20px;
-    min-height: 50px;
-    max-height: 100px;
-    min-width: 165px;
-    max-width: 165px;
+    margin-left: 15px;
+    height: 1.3em;
+    max-height: 50px;
+    min-width: 240px;
+    max-width: 240px;
 }
 
 .ajout_jeu,
@@ -481,18 +486,38 @@
     font-family: Roboto;
     font-weight: bold;
     text-transform: uppercase;
+    font-size:0.8em;
 }
 
 .ajout_video,
 .ajout_jeu {
     text-transform: uppercase;
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
-.element_validate:hover {
-    color: red;
+.element_validate{
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
 }
 
+.element_validate_add{
+  background-color: #D1D85E;
+}
+.element_validate_modif{
+  background-color: #95D6AB;
+}
+.element_validate input{
+  border: none!important;
+  background-color: unset;
+  font-size: 1.4em;
+  color: white;
+  position: relative;
+  height: 100%;
+  width:100%;
+}
 .fa-circle{
     font-size: 1em;
 }
@@ -504,53 +529,106 @@
     font-weight: 600;
     font-size: 16px;
     width: 40%;
+    color: white;
 }
 
-.onglet > i, .onglet > p{
-    display: flex;
-}
-
-.onglet > i{
-    margin-right: 2%;
-}
-
-.onglet > p {
-    margin-left: 2%;
+.onglet_content_text{
+  position: relative;
+  text-align: center;
+  height: 50%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
 }
 
 .onglet_actif{
-    color: red;
+    color: white;
     width: 60%!important;
+}
+.onglet_add{
+  background-color: #D1D85E;
+}
+.onglet_modif{
+  background-color: #95D6AB;
 }
 
 .contenu_onglet{
     display: none;
+    position: relative;
     flex-direction: column;
+    height: calc(100% - 40px);
+    background-color: #EFEFEF;
 }
 
 .film_modif_ajout_onglets{
     position: relative;
     display: flex;
+    height: 40px;
 }
 
 .contenu_add_elem{
     display: block;
+    position: relative;
+    height: 100%;
 }
 
-.film_add_video_et_jeu{
-    display: flex;
-    flex-direction: column;
-}
-
-.film_add_video_et_jeu{
+.film_add_video,.film_add_jeuvideo{
     position: relative;
     display: none;
     width: 100%;
-    height: 80%;
+    height: 100%;
 }
 
-.film_add_onglet_actif{
-    color: red;
+.film_add_video form,.film_add_jeuvideo form{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.film_add_jeuvideo > form img,.film_add_video >form img{
+  height: 25px;
+}
+
+.film_add_elements_ajout_title,.film_add_elements_ajout_describe,.film_add_elements_ajout_folder{
+  display: flex;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.film_add_jeuvideo > form input,.film_add_video > form input,.film_add_jeuvideo > form textarea,.film_add_video > form textarea{
+  border: none;
+  border-bottom: solid 1px #4B4C60;
+  background-color: unset;
+}
+
+#uploadfilm{
+  border: none!important;
+}
+
+.film_add_radio{
+  display: flex;
+  align-items: center;
+}
+.film_add_radio span{
+  display: flex;
+}
+.film_add_radio img{
+  height: 25px;
+}
+
+.film_add_radio > img.inactive{
+  display: flex;
+}
+.film_add_radio >img.active{
+  display: none;
+}
+
+.film_add_onglet_actif > img.active{
+    display: flex!important;
+}
+.film_add_onglet_actif > img.inactive{
+  display: none!important;
 }
 
 .film_add_elem_active{
@@ -561,7 +639,7 @@
     display: flex!important;
 }
 
-.ajout_video{
+.ajout_video,.ajout_jeu{
     cursor:pointer;
 }
 .popup_ajout--film{
@@ -641,6 +719,10 @@
   align-items: center;
 }
 
+.form-group:nth-child(2){
+  margin-top: 30px;
+}
+
 .popup_ajout_label span{
   position: relative;
   color: white;
@@ -701,4 +783,12 @@
 }
 .container_film_hidden{
     display: none;
+}
+#main{
+  position: relative;
+  height: calc(100% - 130px);
+}
+.container{
+  position: relative;
+  height: 100%;
 }

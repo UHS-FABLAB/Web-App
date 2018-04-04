@@ -11,7 +11,7 @@
 <template name="mediaItem">
     <div class='film_added_element draggable' id='media_{{_id}}'>
         <div class='film_element_img'>
-          <img class='film_element_img_image' src='/img/exemple_video.png'>
+          <img class='film_element_img_image' src='{{#unless isGame}}/img/exemple_video.png{{else}}/img/manette.jpg{{/unless}}'>
         </div>
         <div class='film_element_titre'>{{title}}</div>
         <div class='film_element_data'>{{duree}}</div>

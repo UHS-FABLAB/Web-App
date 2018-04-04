@@ -43,13 +43,21 @@ Template.filmManager.events({
     $('#description_film').val(this.description)
     $('#film_duration').text(this.duree)
 
-
+    $('input.ajouter_text').attr('id', this._id)
+    console.log('this.id')
   },
   'click img.add_film': function(e, template){
     e.preventDefault();
 
     var templateName = "film_submit";
     Blaze.render( Template.filmSubmit, $('body').get(0) );
+  },
+  'click .film_launch': function(e, template){
+    e.preventDefault();
+    var currentMedia = $('.ajouter_text').attr('id')
+    console.log(currentMedia)
+    // Blaze.render( Template.mediaTest, $('body').get(0) );
+    Blaze.renderWithData(Template.mediaTest, {_id: currentMedia}, $('body').get(0));
   },
   'click .onglet': function(e, template){
     e.preventDefault();
@@ -60,6 +68,7 @@ Template.filmManager.events({
     if(!$('.onglet.onglet_add').hasClass('onglet_actif')){
       $('.onglet.onglet_add').addClass('onglet_actif');
       $('.onglet.onglet_modif').removeClass('onglet_actif');
+      $('.ajouter_text').attr('id', 'newMedia')
     }else if (e.currentTarget == 'div.onglet_modif'){
         console.log('teub')
     }

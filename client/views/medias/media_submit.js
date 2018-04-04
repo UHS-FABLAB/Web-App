@@ -7,19 +7,28 @@ Template.mediaSubmit.onCreated(function() {
 
 var videoDuration = 0;
 var uploadFileAfterInsert = function(_idMedia){
+
+  // var fileObj = new FileObject(event.target.files[0]);
+  // fileObj.metadata = {owner: Meteor.userId()};
+  //
+
   var fileUploader = $('#upload_film')[0];
   var fileId = "";
   if (fileUploader.files && fileUploader.files[0]) {
     // We upload only one file, in case
     // there was multiple files selected
+    console.log('increase metadata')
     var file = fileUploader.files[0];
+    //file.metadata = {owner: Meteor.userId()};
     if (file) {
       var uploadObject = {
         file: file,
         streams: 'dynamic',
-        chunkSize: 'dynamic',
+        chunkSize: 'dynamic'
       }
 
+
+      console.log(Meteor.userId(), uploadObject, file)
       var uploadInstance = Files.insert(uploadObject, false);
       console.log(this, Template.instance())
 
@@ -125,14 +134,19 @@ Template.mediaSubmit.events({
     }
 
   },
+  /*manage video or game tabs*/
   'click .film_add_radio': function(e, template){
     console.log(e.currentTarget)
     if($(e.currentTarget).hasClass('film_add_video_onglet')){
       $('div.film_add_video_onglet').addClass('film_add_onglet_actif');
       $('div.film_add_jeuvideo_onglet').removeClass('film_add_onglet_actif');
+      $('div.film_add_video').addClass('film_add_elem_active');
+      $('div.film_add_jeuvideo').removeClass('film_add_elem_active');
     } else {
       $('div.film_add_video_onglet').removeClass('film_add_onglet_actif');
       $('div.film_add_jeuvideo_onglet').addClass('film_add_onglet_actif');
+      $('div.film_add_jeuvideo').addClass('film_add_elem_active');
+      $('div.film_add_video').removeClass('film_add_elem_active');
     }
 
 
