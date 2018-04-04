@@ -6,7 +6,7 @@
     <div id="main">
       {{#unless currentUser}}
         {{> loginPage}}
-        <!-- {{> registerPage}} -->
+        {{> registerPage}}
       {{else}}
         {{> yield}}
       {{/unless}}

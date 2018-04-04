@@ -7,19 +7,28 @@ Template.mediaSubmit.onCreated(function() {
 
 var videoDuration = 0;
 var uploadFileAfterInsert = function(_idMedia){
+
+  // var fileObj = new FileObject(event.target.files[0]);
+  // fileObj.metadata = {owner: Meteor.userId()};
+  //
+
   var fileUploader = $('#upload_film')[0];
   var fileId = "";
   if (fileUploader.files && fileUploader.files[0]) {
     // We upload only one file, in case
     // there was multiple files selected
+    console.log('increase metadata')
     var file = fileUploader.files[0];
+    //file.metadata = {owner: Meteor.userId()};
     if (file) {
       var uploadObject = {
         file: file,
         streams: 'dynamic',
-        chunkSize: 'dynamic',
+        chunkSize: 'dynamic'
       }
 
+
+      console.log(Meteor.userId(), uploadObject, file)
       var uploadInstance = Files.insert(uploadObject, false);
       console.log(this, Template.instance())
 

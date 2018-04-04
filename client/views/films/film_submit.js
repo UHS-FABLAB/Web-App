@@ -33,7 +33,7 @@ Template.filmSubmit.events({
         if (result.filmExists)
             throwError('Ce lien a déjà été utilisé');
 
-      //  Router.go('filmPage', {_id: result._id});
+        Router.go('filmManager', {_id: result._id});
     });
 
     Blaze.remove(Blaze.currentView)

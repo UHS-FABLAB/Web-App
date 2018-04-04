@@ -1,19 +1,20 @@
 <template name="filmItem">
   <div class="rTableRow rTableRow-Films film-content">
       <div class="rTableCell rTableCell-Films">
-        <h3 ><a href="{{pathFor 'filmManager'}}">{{title}}</a><span>description : {{description}}</span></h3>
-        Rédigé par {{author}},
+        <h3 ><a href="{{pathFor 'filmManager'}}">{{title}}</a></h3>
+
+
       </div>
       <div class="rTableCell rTableCell-Films">
-        <a href="{{pathFor 'filmPage'}}">{{sequencesCount}} sequences</a>
+        <span>{{description}}</span>
       </div>
 
-      <div class="rTableCell rTableCell-Films">
+      <!--   <div class="rTableCell rTableCell-Films">
           {{#if ownPost}}<a href="{{pathFor 'filmEdit'}}">Edit</a>{{/if}}
       </div>
 
       <div class="rTableCell rTableCell-Films">
           <a href="{{pathFor 'filmPage'}}" class="discuss btn btn-default">Discuss</a>
-      </div>
+      </div> -->
   </div>
 </template>
