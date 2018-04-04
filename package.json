@@ -5,10 +5,16 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.42",
     "babel-runtime": "^6.26.0",
     "bcrypt": "^1.0.3",
+<<<<<<< HEAD
     "firebase": "^4.12.0",
+=======
+    "firebase": "^4.11.0",
+>>>>>>> b5e29d53ba22b90ee81c1fb392182b9982f63b04
     "meteor-node-stubs": "^0.3.2",
+    "npm": "^5.8.0",
     "unzip2": "0.2.5"
   }
 }

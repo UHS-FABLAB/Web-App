@@ -102,18 +102,16 @@
 
 .container_film_actif{
     position: relative;
-    height: 90%;
+    height: calc(100% - 60px);
 }
-
-
 .film_list_added_elements{
-	display: flex;
-	position: relative;
-	height: 30%;
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #62CEE2;
+  display: flex;
+  position: relative;
+  height: 30%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #62CEE2;
 }
 
 .film_list_added_elements i {
@@ -204,121 +202,134 @@
 /* PRORIETES CSS PAGE HOME */
 
 .titre_container{
-	position: relative;
-	display: block;
-	height: 70px;
+  position: relative;
+  display: block;
+  height: 70px;
 }
 
 .titre_home{
-	margin-top: 0px!important;
+  margin-top: 0px!important;
 }
 
 .application{
-	display: block;
-	position: relative;
-	height: calc( 100% - 70px);
+  display: block;
+  position: relative;
+  height: 100%;
 }
 
 .liste_films{
-	position: relative;
-	display: inline-block;
-	height: 10%;
-	width: 100%;
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 100%;
 }
 
 .film{
-	position: relative;
-	display: inline-block;
-	float: left;
-	cursor: pointer;
-	width: auto;
-	min-width: 5%;
-	max-width: 10%;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 21px;
-	height: 40px;
-	text-transform: uppercase;
-	font-family: Calibri;
-	background-color: #f28e2b;
-	text-overflow: ellipsis;
-	overflow-y: hidden;
-	vertical-align: top;
-	border-right: solid 1px white;
+  -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+  position: relative;
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+  width: auto;
+  max-width: 20%;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 60px;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-family: Calibri;
+  background-color: #f28e2b;
+  color: white;
+  text-overflow: ellipsis;
+  overflow-y: hidden;
+  vertical-align: top;
+  border-right: solid 1px white;
 }
-
+.film a{
+  text-decoration: none;
+}
+.onglet_film_actif{
+  height: 50px;
+  color: white!important;
+  font-weight: 600;
+}
+.liste_films--title{
+  
+}
 .film:hover{
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .selection{
-	background-color: #c87523;
+  background-color: #c87523;
 }
 
 .film_active{
-	background-color: #cecece;
+  background-color: #cecece;
 }
 
 .add_film{
-	position: relative;
-	display: inline-block;
-	float: left;
-	cursor: pointer;
-	width: 60px;
-	height: 61px;
-	background-color: #f28e2b;
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 15px;
+  position: relative;
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+  width: 60px;
+  height: 61px;
+  background-color: #f28e2b;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .add_film:hover{
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .add_film > img{
-	display: block;
-	position: relative;
-	height: 60px;
-	width: 60px;
-	margin-left: auto;
-	margin-right: auto;
-	cursor: pointer;
+  display: block;
+  position: relative;
+  height: 60px;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
 }
 
 .film_details_container{
-	width: 100%;
-	height: 100%;
-	background-color: white;
-	margin-top: -4px;/*permet de coller le conteneur aux onglets de films*/
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: white;
+  margin-top: -4px;/*permet de coller le conteneur aux onglets de films*/
 }
 
 .titre_film{
-	position: relative;
-	display: block;
-	font-family: 'Roboto';
-	font-size: 120%;
-	font-weight: bold;
-	text-align: center;
-	padding-top: 2%;
+  position: relative;
+  display: block;
+  font-family: 'Roboto';
+  font-size: 120%;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 2%;
 }
 
 .film_details{
-	display: block;
-	position: relative;
-	height: 90%;
-	width: 100%;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .film_modif_container{
-	position: relative;
-	display: flex;
-	height: 75%;
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
+  position: relative;
+  display: flex;
+  height: 70%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 
-}
-
+<<<<<<< HEAD
 .film_list_added_elements{
 	display: flex;
   margin-top: 15px;
@@ -328,73 +339,76 @@
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #cecece;
+=======
+>>>>>>> b5e29d53ba22b90ee81c1fb392182b9982f63b04
 }
 
 .film_details_container_left{
-	display: flex;
-	flex: 1;
-	height: 80%;
-	margin-right: 2%;
-	margin-top: 3%;
+  display: flex;
+  height: 80%;
+  margin-right: 2%;
+  margin-top: 3%;
 }
 
 .film_video{
-	position: relative;
-	display: flex;
-	flex: 1;
-	height: 100%;
-	background-color: #cecece;
-	margin-right: 2%;
+  position: relative;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  background-color: #cecece;
+  margin-right: 2%;
 }
 
 .film_video > video {
-	width: 100%;
+  width: 100%;
 }
 
 .film_details_container_right{
-	display: flex;
-	flex: 3;
-	height: 80%;
-	margin-left: 2%;
-	margin-top: 3%;
+  display: flex;
+  flex-grow: 2;
+  height: 80%;
+  margin-left: 2%;
+  margin-top: 3%;
 }
 
 .film_connexion_structure{
-	position: relative;
-	display: flex;
-	flex: 3;
-	background-color: #cecece;
-	margin-right: 3%;
+  position: relative;
+  display: flex;
+  background-color: #cecece;
+  flex-grow: 2;
+  min-width: 400px;
+  margin-right: 3%;
 }
 
 .film_launch{
-	position: relative;
-	display: flex;
-	margin-left: 3%;
-	cursor: pointer;
+  position: relative;
+  display: flex;
+  margin-left: 3%;
+  cursor: pointer;
+  max-width: 140px;
 }
 
 .film_launch:hover{
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .film_launch img{
-	position: relative;
+  position: relative;
     height: 30%;
-	width: auto;
-	margin-top: auto;
+  width: auto;
+  margin-top: auto;
     margin-bottom: auto;
-	}
+  }
 
 .film_connexion_structure_button{
-	position: relative;
-	display: flex;
-	height: 20%;
-	margin-top: 5%;
-	width: 100%;
-	align-items: center;
-	justify-content: center;
-	background-color: white;
+  position: relative;
+  display: flex;
+  height: 20%;
+  margin-top: 5%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 }
 
 .film_list_added_elements i:hover{
@@ -407,12 +421,13 @@
 }
 
 .arrow_button_list_added:hover{
-	opacity: 0.8;
+  opacity: 0.8;
 }
-
 .film_add_elements_onglets {
     display: flex;
     justify-content: space-around;
+    padding-top: 8px;
+    padding-bottom: 6px;
 }
 
 .film_add_elements {
@@ -431,19 +446,7 @@
     flex-direction: column;
 }
 
-.film_add_elements_ajout_title {
-    margin-top: 4px;
-    font-size: 1.5em;
-}
-
-.film_add_elements_ajout_folder{
-    margin-top: 15px;
-    font-size: 1.5em;
-}
-
-.film_add_elements_ajout_describe {
-    margin-top: 0px;
-    margin-bottom: 0px;
+.film_add_elements_ajout_folder,.film_add_elements_ajout_describe,.film_add_elements_ajout_title{
     font-size: 1.5em;
 }
 
@@ -455,7 +458,7 @@
     cursor: pointer;
 }
 
-.ajouter_text, .valider_text {
+.add_media_button, .edit_media_button {
     font-family: "Roboto";
     font-weight: bold;
 }
@@ -471,12 +474,11 @@
 
 .ajout_description {
     position: relative;
-    margin-top: 17px;
-    margin-left: 20px;
-    min-height: 50px;
-    max-height: 100px;
-    min-width: 165px;
-    max-width: 165px;
+    margin-left: 15px;
+    height: 1.3em;
+    max-height: 50px;
+    min-width: 240px;
+    max-width: 240px;
 }
 
 .ajout_jeu,
@@ -484,18 +486,38 @@
     font-family: Roboto;
     font-weight: bold;
     text-transform: uppercase;
+    font-size:0.8em;
 }
 
 .ajout_video,
 .ajout_jeu {
     text-transform: uppercase;
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
-.element_validate:hover {
-    color: red;
+.element_validate{
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
 }
 
+.element_validate_add{
+  background-color: #D1D85E;
+}
+.element_validate_modif{
+  background-color: #95D6AB;
+}
+.element_validate input{
+  border: none!important;
+  background-color: unset;
+  font-size: 1.4em;
+  color: white;
+  position: relative;
+  height: 100%;
+  width:100%;
+}
 .fa-circle{
     font-size: 1em;
 }
@@ -503,58 +525,110 @@
 .onglet{
     display: flex;
     align-items: center;
-    flex: 1;
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 16px;
+    width: 40%;
+    color: white;
 }
 
-.onglet > i, .onglet > p{
-    display: flex;
-}
-
-.onglet > i{
-    margin-right: 2%;
-}
-
-.onglet > p {
-    margin-left: 2%;
+.onglet_content_text{
+  position: relative;
+  text-align: center;
+  height: 50%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
 }
 
 .onglet_actif{
-    color: red;
-    flex: 2!important;
+    color: white;
+    width: 60%!important;
+}
+.onglet_add{
+  background-color: #D1D85E;
+}
+.onglet_modif{
+  background-color: #95D6AB;
 }
 
 .contenu_onglet{
     display: none;
+    position: relative;
     flex-direction: column;
+    height: calc(100% - 40px);
+    background-color: #EFEFEF;
 }
 
 .film_modif_ajout_onglets{
     position: relative;
     display: flex;
-}
-
-.film_modif_ajout_onglets_alter{
-    flex-direction: row-reverse;
+    height: 40px;
 }
 
 .contenu_add_elem{
     display: block;
+    position: relative;
+    height: 100%;
 }
 
 .film_add_video,.film_add_jeuvideo{
-    display: flex;
-    flex-direction: column;
-}
-
-.film_add_video, .film_add_jeuvideo{
     position: relative;
     display: none;
     width: 100%;
-    height: 80%;
+    height: 100%;
 }
 
-.film_add_onglet_actif{
-    color: red;
+.film_add_video form,.film_add_jeuvideo form{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.film_add_jeuvideo > form img,.film_add_video >form img{
+  height: 25px;
+}
+
+.film_add_elements_ajout_title,.film_add_elements_ajout_describe,.film_add_elements_ajout_folder{
+  display: flex;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.film_add_jeuvideo > form input,.film_add_video > form input,.film_add_jeuvideo > form textarea,.film_add_video > form textarea{
+  border: none;
+  border-bottom: solid 1px #4B4C60;
+  background-color: unset;
+}
+
+#uploadfilm{
+  border: none!important;
+}
+
+.film_add_radio{
+  display: flex;
+  align-items: center;
+}
+.film_add_radio span{
+  display: flex;
+}
+.film_add_radio img{
+  height: 25px;
+}
+
+.film_add_radio > img.inactive{
+  display: flex;
+}
+.film_add_radio >img.active{
+  display: none;
+}
+
+.film_add_onglet_actif > img.active{
+    display: flex!important;
+}
+.film_add_onglet_actif > img.inactive{
+  display: none!important;
 }
 
 .film_add_elem_active{
@@ -565,26 +639,10 @@
     display: flex!important;
 }
 
-.ajout_video{
+.ajout_video,.ajout_jeu{
     cursor:pointer;
 }
-
-.onglet{
-    text-transform: uppercase;
-    font-family: Roboto;
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.onglet_add{
-    flex:2;
-}
-
-.onglet_modif{
-    flex:1;
-}
-
-.onglet_ajout--film{
+.popup_ajout--film{
     position: absolute;
     z-index: 2;
     background-color: #f28e2b;
@@ -598,78 +656,89 @@
     padding: 15px;
 }
 
-.onglet_ajout_film{
-	position: relative;
+.popup_ajout_film{
+  position: relative;
     display: flex;
+    flex-direction: row;
     background-color: #cfd759;
-   	padding:15%;
-   	margin-bottom: 5%;
+    padding:30px;
+    width: calc(100% - 60px);
+    margin-bottom: 5%;
+}
+.popup_ajout_img_container,.popup_form_group_container{
+  display: flex;
+  flex-direction: column;
+}
+.popup_ajout_film input, .popup_ajout_film textarea{
+  position: relative;
+  height: 35px;
+  font-size: 22px;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  border-bottom: solid 2px white;
+  color: white;
 }
 
-.onglet_ajout_film input{
-	position: relative;
-	height: 35px;
-	font-size: 22px;
-	background-color: transparent;
-	border: none;
-	border-bottom: solid 2px white;
-	color: white;
+.popup_ajout_film input:focus, .popup_ajout_film textarea:focus{
+  outline: none;
 }
 
-.onglet_ajout_film input:focus{
-	outline: none;
-}
-
-.onglet_ajout_film input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.popup_ajout_film input::placeholder, .popup_ajout_film textarea::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;
 }
 
-.onglet_ajout_film input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.popup_ajout_film input:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: white;
 }
 
-.onglet_ajout_film input::-ms-input-placeholder { /* Microsoft Edge */
+.popup_ajout_film input::-ms-input-placeholder { /* Microsoft Edge */
     color: white;
 }
 
-.onglet_ajout_film_titre{
-	color: white;
-	position: relative;
-	font-size: 1.5em;
-	font-weight: 900;
+.popup_ajout_film_titre{
+  color: white;
+  position: relative;
+  font-size: 1.5em;
+  font-weight: 900;
 }
 
-.onglet_ajout_img{
-	position: relative;
-	margin-right: 7%;
+.popup_ajout_img{
+  position: relative;
+  margin-right: 7%;
 }
 
-.onglet_ajout_img img{
-	height: 135px;
-	width: auto;
+.popup_ajout_img img{
+  height: 135px;
+  width: auto;
 }
 
-.onglet_ajout_label{
-	position: relative;
-	display: flex;
-	align-items: center;
+.popup_ajout_label{
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.onglet_ajout_label span{
-	position: relative;
-	float: left;
-	color: white;
+.form-group:nth-child(2){
+  margin-top: 30px;
 }
 
-.onglet_ajout_label span:nth-child(1){
-	margin-right: 15%;
-	font-size: 25px;
-	font-weight: 900;
+.popup_ajout_label span{
+  position: relative;
+  color: white;
+  text-align: left;
 }
 
-.onglet_ajout_label span:nth-child(2){
+.popup_ajout_label label{
+  width: 35%;
+  font-size: 25px;
+  font-weight: 900;
 }
 
+.popup_ajout_label .controls{
+  min-width: 60%;
+}
+*/
 .valider_text_film{
     font-family: Roboto;
     margin-left: 15px;
@@ -684,15 +753,18 @@
     color: white;
     border-radius: 15px;
     font-size: 27px;
+    border: solid 3px transparent;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .fa-check-v:hover{
     cursor: pointer;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left:7px;
-    padding-right:7px;
-    border: solid 3px white;
+    padding-left: 12px!important;
+    padding-right: 12px!important;
+    border: solid 3px white!important;
 }
 
 .fa-times-close{
@@ -708,4 +780,15 @@
 .fa-times-close:hover{
     color: red;
     cursor: pointer;
+}
+.container_film_hidden{
+    display: none;
+}
+#main{
+  position: relative;
+  height: calc(100% - 130px);
+}
+.container{
+  position: relative;
+  height: 100%;
 }

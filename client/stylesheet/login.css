@@ -2,6 +2,7 @@
 
 
 html, body, .body-film-manager{
+	position: relative;
 	margin : 0!important;
 	height: 100%;
 }
@@ -38,7 +39,8 @@ html, body, .body-film-manager{
 
 .titre{
  	font-size: 230%;
- 	margin-top: 5%;
+ 	margin-top: 20px;
+ 	margin-bottom: 25px;
  	text-align: center;
  	font-family: "Roboto";
 }
