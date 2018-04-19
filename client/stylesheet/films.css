@@ -257,7 +257,7 @@
   font-weight: 600;
 }
 .liste_films--title{
-  
+
 }
 .film:hover{
   opacity: 0.8;
@@ -329,18 +329,6 @@
   margin-left: auto;
   margin-right: auto;
 
-<<<<<<< HEAD
-.film_list_added_elements{
-	display: flex;
-  margin-top: 15px;
-	position: relative;
-	height: 30%;
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #cecece;
-=======
->>>>>>> b5e29d53ba22b90ee81c1fb392182b9982f63b04
 }
 
 .film_details_container_left{

@@ -1,0 +1,12 @@
+<template name="newBuild">
+    <div class="new-build">
+
+        <form class="new-build-form">
+            <input type="text" name="title" maxlength="40" class="new-build-title" placeholder="New build title" required/>
+            <br>
+            <input type="file" id="fileUpload" class="image-bug cloudinary-fileupload" multiple="false" accept=".zip" required/>
+            <input type="submit" name="sendBtn" value="upload">
+        </form>
+
+    </div>
+</template>
