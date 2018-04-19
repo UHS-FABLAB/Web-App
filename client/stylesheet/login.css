@@ -1,5 +1,4 @@
-/* Propriétés CSS de la page INDEX */
-
+@import url("https://fonts.googleapis.com/icon?family=Material%20Icons");
 
 html, body, .body-film-manager{
 	position: relative;
@@ -43,6 +42,10 @@ html, body, .body-film-manager{
  	margin-bottom: 25px;
  	text-align: center;
  	font-family: "Roboto";
+}
+
+.register_display{
+	display: none;
 }
 
 .connect_container{
@@ -115,6 +118,7 @@ html, body, .body-film-manager{
 	vertical-align: middle;
 	text-align: center;
 	display: inline-block;
+	color: rgb(117, 117, 117);
 	background-color: white;
 	height: 30px;
 	width: 30px;
@@ -148,6 +152,8 @@ html, body, .body-film-manager{
 .connect_error{
 	display: block;
 	position: relative;
+	/* Test pour changer la position du message d'erreur */
+	margin-bottom: 10px;
 	opacity: 0;
 	text-align: center;
 	font-size: 90%;

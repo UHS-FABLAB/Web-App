@@ -5,14 +5,27 @@
     {{> errors}}
     <div id="main">
       {{#unless currentUser}}
-        {{> loginPage}}
-        {{> registerPage}}
+
+        <div id="login_div">
+            {{> loginPage}}
+        </div>
+        
+        <div id="register_div" class="register_display" >
+            {{> registerPage}}
+        </div>
       {{else}}
-        {{> yield}}
+        {{#unless currentUser.emails.[0].verified}}
+        {{> notVerified}}             
+          {{else}}
+            {{> yield}}             
+          {{/unless}} 
       {{/unless}}
     </div>
   </div>
 </template>
+
+
+        
 <!--
 <body>
   <h1>Welcome to Meteor!</h1>
