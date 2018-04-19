@@ -2,25 +2,24 @@
 
         <div class="overlay">
             <div class="in_overlay">
-            	<div class='connect_container'>
-                    <div class="nb_answers">Nombre de réponse : <span id="nb_of_answers"></span>
+            	<div class='dependance_add_container'>
+                    <div class="nb_answers"><p>Nombre de réponse : <span id="nb_of_answers"></span>
                         <button class="btn_add_answer"> +</button>
                         <button class="btn_remove_answer"> -</button>
-
+                    </p>
                     </div>
                         <form class="new_question" id="new_question_form">
 
-                                <input type="text" id="questionId" name="question" placeholder="Entrez votre question içi" />
-                                <input type="text" id ="answer_1" name="answer_1" placeholder="Choix par défaut" />
+                                <div><input type="text" id="questionId" name="question" placeholder="Entrez votre question içi" /></div>
+                                <div><input type="text" id ="answer_1" name="answer_1" placeholder="Choix par défaut" /></div>
 
                          </form>
                     
                  </div>
-                 <div class='connect_button'>     
-                                <button class="btn_validate_form"> validation</button>
+                 <div class='dependance_add_button'>     
+                        <button class="btn_validate_form"> validation</button>
+                        <button class="btn_exit_form"> annuler</button>
                  </div>
-
-                <button class="btn_exit_form"> annuler</button>
             </div>
         </div>
         </template>
