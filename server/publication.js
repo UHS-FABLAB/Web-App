@@ -79,3 +79,13 @@ var deleteFolderRecursive = function(path) {
         fs.rmdirSync(path);
     }
 };
+
+
+Meteor.publish('votes', function() {
+  return Votes.find();
+});
+
+
+Meteor.publish('responses', function() {
+  return Responses.find();
+});

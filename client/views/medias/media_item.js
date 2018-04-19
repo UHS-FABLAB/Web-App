@@ -8,3 +8,5 @@ Template.mediaSubmit.helpers({
 
 
 })
+
+
