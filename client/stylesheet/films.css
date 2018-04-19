@@ -434,7 +434,7 @@
     flex-direction: column;
 }
 
-.film_add_elements_ajout_folder,.film_add_elements_ajout_describe,.film_add_elements_ajout_title{
+.film_add_elements_ajout_folder,.film_add_elements_ajout_describe,.film_add_elements_ajout_title,.film_add_elements_ajout_dependance{
     font-size: 1.5em;
 }
 
@@ -456,8 +456,13 @@
 }
 
 .ajout_parcourir,
-.ajout_title {
+.ajout_title, .contenu_onglet_modif > form label {
     margin-left: 15px;
+}
+
+.contenu_onglet_modif > form label{
+  font-size: 14px;
+  color: #4B4C60;
 }
 
 .ajout_description {
@@ -538,6 +543,11 @@
 }
 .onglet_modif{
   background-color: #95D6AB;
+  opacity: 0.7;
+}
+.onglet_modif.onglet_actif{
+  color: white;
+  opacity: 1;
 }
 
 .contenu_onglet{
@@ -573,18 +583,18 @@
     height: 100%;
 }
 
-.film_add_jeuvideo > form img,.film_add_video >form img{
+.film_add_jeuvideo > form img,.film_add_video >form img,.contenu_onglet_modif img{
   height: 25px;
 }
 
-.film_add_elements_ajout_title,.film_add_elements_ajout_describe,.film_add_elements_ajout_folder{
+.film_add_elements_ajout_title,.film_add_elements_ajout_describe,.film_add_elements_ajout_folder,.film_add_elements_ajout_dependance{
   display: flex;
   margin-top: 15px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.film_add_jeuvideo > form input,.film_add_video > form input,.film_add_jeuvideo > form textarea,.film_add_video > form textarea{
+.film_add_jeuvideo > form input,.film_add_video > form input,.film_add_jeuvideo > form textarea,.film_add_video > form textarea,.contenu_onglet_modif > form input,.contenu_onglet_modif > form textarea{
   border: none;
   border-bottom: solid 1px #4B4C60;
   background-color: unset;
@@ -774,7 +784,7 @@
 }
 #main{
   position: relative;
-  height: calc(100% - 130px);
+  height: calc(100% - 50px);
 }
 .container{
   position: relative;

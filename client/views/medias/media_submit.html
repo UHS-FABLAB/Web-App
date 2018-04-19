@@ -90,19 +90,26 @@
       </div>
 
       <div class="contenu_onglet contenu_onglet_modif">
+        <form>
           <p style="font-family: Calibri;text-align: center;margin-top:0px;">Sélectionnez un média à modifier</p>
+          <div class="film_add_elements_ajout_dependance">
+              <img src='/img/dependance_icon.png'>
+              <label>liaison / dépendance</label>
+          </div>
+
           <div class="film_add_elements_ajout_title">
-              <i class="fa fa-tags" aria-hidden="true"></i>
+              <img src='/img/title_icon.png'>
               <input type="text" id="media_modif_title" value="" class="ajout_title" placeholder=" Titre" />
           </div>
 
           <div class="film_add_elements_ajout_folder">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-              <button style="margin-left: 22px;" type="submit">Supprimer le média</button>
+              <img src='/img/directory_icon.png'>
+              <button style="margin-left: 22px;" type="submit">Modifier</button>
+              <button style="margin-left: 22px;" type="submit">Supprimer</button>
           </div>
 
           <div class="film_add_elements_ajout_describe">
-              <i class="fa fa-info-circle" aria-hidden="true"></i>
+              <img src='/img/description_icon.png'>
               <textarea class="ajout_description" id="media_modif_describ" value="" placeholder="Description..."></textarea>
           </div>
 
@@ -111,6 +118,7 @@
           <div class="element_validate element_validate_modif">
               <input type='submit' class="valider_text" value="Valider">
           </div>
+        </form>
       </div>
 
   </div>

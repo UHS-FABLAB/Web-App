@@ -27,6 +27,8 @@ Template.filmManager.events({
     if(!$('.onglet.onglet_modif').hasClass('onglet_actif')){
       $('.onglet.onglet_modif').addClass('onglet_actif');
       $('.onglet.onglet_add').removeClass('onglet_actif');
+      $('.contenu_onglet_add').removeClass('contenu_onglet_actif');
+      $('.contenu_onglet_modif').addClass('contenu_onglet_actif');
     }
 
      $('.film_add_elements').attr('id',this._id)
@@ -39,8 +41,8 @@ Template.filmManager.events({
       $('div.film_add_video_onglet').addClass('film_add_onglet_actif');
       $('div.film_add_jeuvideo_onglet').removeClass('film_add_onglet_actif');
     }
-    $('#titre_film').val(this.title)
-    $('#description_film').val(this.description)
+    $('#media_modif_title').val(this.title)
+    $('#media_modif_describ').val(this.description)
     $('#film_duration').text(this.duree)
 
     $('input.ajouter_text').attr('id', this._id)
@@ -55,7 +57,7 @@ Template.filmManager.events({
   'click .film_launch': function(e, template){
     e.preventDefault();
     var currentMedia = $('.ajouter_text').attr('id')
-    console.log(currentMedia)
+    //console.log(currentMedia)
     // Blaze.render( Template.mediaTest, $('body').get(0) );
     Blaze.renderWithData(Template.mediaTest, {_id: currentMedia}, $('body').get(0));
   },
@@ -63,15 +65,12 @@ Template.filmManager.events({
     e.preventDefault();
 
     console.log(this, e, template)
-
-
     if(!$('.onglet.onglet_add').hasClass('onglet_actif')){
       $('.onglet.onglet_add').addClass('onglet_actif');
       $('.onglet.onglet_modif').removeClass('onglet_actif');
+      $('.contenu_onglet_add').addClass('contenu_onglet_actif');
+      $('.contenu_onglet_modif').removeClass('contenu_onglet_actif');
       $('.ajouter_text').attr('id', 'newMedia')
-    }else if (e.currentTarget == 'div.onglet_modif'){
-        console.log('teub')
     }
-
   }
 })
