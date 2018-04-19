@@ -19,15 +19,6 @@
         event.preventDefault();
         //cache l'overlay
         $(".overlay").hide();
-        // réinitialise les champs du formulaire à null
-        
-        // var formData = $('#new_question_form').serializeArray();
-        // var formLength = formData.length;
-        // // Tant qu'il reste des champ input ajoutés les supprime
-        // while (formLength > 2){
-        //   $("#new_question_form").children().last().remove();
-        //   formLength--;
-        // }
 
         Session.set('isVoteExist',false);
 
@@ -78,21 +69,18 @@
           filmId: film_id
 
         };
-
-        // Check si un vote existe déjà pour ce film, si oui l'update sinon l'insert dans la BDD
-        if(!isVote){
-          Meteor.call('voteInsert', vote, mon_media);
-        }else {
-          Meteor.call('voteUpdate',vote, mon_media)          
-        }
-
-        
         var reponse = {
           content: "",
           defaultChoice: false,
           mediaId: mon_media._id,
           voteId: ""
         }
+
+        // Check si un vote existe déjà pour ce film, si oui l'update sinon l'insert dans la BDD
+        if(!isVote){
+          //insert le vote
+          Meteor.call('voteInsert', vote, mon_media);
+
         // Pour chaque réponse, si la réponse n'est pas vide créer une réponse dans la bdd
         formData.forEach(function(item) {
           if(item.name!="question"){
@@ -106,6 +94,24 @@
 
           }
         });
+
+        }else {
+          // update le vote
+          Meteor.call('voteUpdate',vote, mon_media)   
+
+          //update les réponses
+          var arrayResponses = Session.get('responses');
+          formData.forEach(function(item) {
+            if(item.name!="question"){
+              
+            }
+          });
+
+        }
+
+        
+
+
 
         //Met fin au formulaire et cache l'overlay
        $(".overlay").hide();

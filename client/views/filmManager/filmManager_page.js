@@ -44,6 +44,17 @@ Template.filmManager.events({
     $('#film_duration').text(this.duree)
 
     $('input.ajouter_text').attr('id', this._id)
+
+            // réinitialise les champs du formulaire à null
+        
+            var formData = $('#new_question_form').serializeArray();
+            var formLength = formData.length;
+            // Tant qu'il reste des champ input ajoutés les supprime
+            while (formLength > 2){
+              $("#new_question_form").children().last().remove();
+              formLength--;
+            }
+    
     
     //Stocke l'id du film et l'id du media sur lequel on a cliqué.
     Session.set("filmId",this.filmId);
@@ -62,14 +73,14 @@ Template.filmManager.events({
       var mon_vote = Votes.findOne({_id: mon_media.voteId});
       //Récupère les réponses associés à ce vote
       var mes_responses = Responses.find({voteId: mon_vote._id}).fetch();
+      Session.set('responses',mes_responses);
       
 
       //Remplit le champs Question du formulaire avec la question du vote récupéré.
       document.getElementById('questionId').value =mon_vote.title;
 
       //Remplit les champs réponses du formulaire 
-      var formData = $('#new_question_form').serializeArray();
-      var formLength = formData.length;
+
       mes_responses.forEach(function(item) {
         if(item.defaultChoice == true){
           document.getElementById('answer_1').value = item.content;
