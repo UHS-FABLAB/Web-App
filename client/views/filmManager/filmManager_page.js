@@ -98,6 +98,8 @@ Template.filmManager.events({
 
       // Affiche l'overlay
       $(".overlay").show();
+      //console.log(Template.questionnaireOverlay);
+      Template.questionnaireOverlay.fillMediaOutputOptions(1);
 
   },
   'click img.add_film': function(e, template){
