@@ -201,6 +201,32 @@ $(document).ready(function(){
       console.log('fin ',actual)
       // Recpu réponse depuis serveur
 
+        //Pour poster un nouveau vote :
+        /*
+            Meteor.call('postNewVoteFirebase', NOM_ECRAN, VOTE_ID, (error,response) => {
+                console.log(response);
+            });
+            NOM_ECRAN : est le nom de l'écran qui va aller dans firebase : DE BASE METTRE ecran1
+            VOTE_ID : Numéro de vote DANS LA BASE DE DONNEES METEOR qu'on souhaite poster.
+            Il va récupérer automatiquement les réponses à envoyer à firebase
+
+            RETOUR :
+            {message : 'OK'}
+        */
+
+        //Pourobtenir l'ID du média gagnant du vote ACTUEL:
+        /*
+            Meteor.call('getWinnerCurrentVoteFirebase', NOM_ECRAN, (error,response) => {
+                console.log(response);
+            });
+            NOM_ECRAN : est le nom de l'écran qui va aller dans firebase : DE BASE METTRE ecran1
+            Il va récupérer automatiquement l'ID du vote acutel
+
+            RETOUR :
+            Si OK : {response : response, nbVote : winner.votes, error : false }
+            Si ERREUR : {message : 'Impossible de trouver le gagnant !', error : true }
+        */
+
       $("#SourceVd").onload = function() {
           console.log( this.src );
       }
