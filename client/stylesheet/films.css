@@ -4,6 +4,22 @@
   text-align: center;
 }
 
+.overlay {
+  display: none;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.in_overlay {
+  position: relative;
+}
 
 .film-player{
   background-color: black;
@@ -258,7 +274,7 @@
   font-weight: 600;
 }
 .liste_films--title{
-  
+
 }
 .film:hover{
   opacity: 0.8;
@@ -791,3 +807,59 @@
   position: relative;
   height: 100%;
 }
+.dependance_add_container .nb_answers{
+  text-align: center;
+}
+.dependance_add_container form.new_question{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dependance_add_container form.new_question input{
+    border: none;
+    border-bottom: solid 1px #4B4C60;
+    background-color: unset;
+}
+.dependance_add_container form.new_question > div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.dependance_add_container form.new_question > div:first-child{
+  margin-bottom: 20px;
+}
+.dependance_add_container form.new_question > *{
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.dependance_add_container form.new_question > div > *{
+  position: relative;
+  display: flex;
+}
+.dependance_add_container form.new_question > div > span{
+  margin-left: 50px;
+  min-width: 70px;
+  margin-right: 25px;
+}
+.dependance_add_container form.new_question > div:first-child input{
+  position: relative;
+  min-width: 240px;
+  width: 60%;
+  border: solid 1px #4B4C60!important;
+  text-align: center;
+}
+.dependance_add_button{
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ padding-top: 5px;
+ padding-bottom: 5px;
+}
+.dependance_add_button > button{
+ display: flex;
+ margin-left: 20px;
+ margin-right: 20px;
+ }

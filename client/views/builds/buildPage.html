@@ -1,0 +1,26 @@
+<template name="buildPage">
+    {{#if isUploaded}}
+    uploaded
+        {{> buildItem}}
+
+        {{#if own}}
+            <form class="build-page-form">
+                <ul>
+
+                    <li><span>Title:</span><input type="text" name="buildTitle" class="new-message-text" value="{{title}}" required/></li>
+                    <li><span>Width:</span><input type="text" name="buildWidth" class="new-message-text" value="{{width}}" required/></li>
+                    <li><span>Height:</span><input type="text" name="buildHeight" class="new-message-text" value="{{height}}" required/></li>
+                    <li> <a href="" id="saveBuild" class="discuss btn btn-default">Save</a></li>
+                </ul>
+
+                <!--<input type="submit" name="sendBtn" value="Send">-->
+            </form>
+            <a href="" id="removeBuild" class="discuss btn btn-default">Remove</a>
+        {{/if}}
+    {{else}}
+    not uploaded
+        <p><span>Uploading: </span> {{> FS.UploadProgressBar}}</p>
+    {{/if}}
+
+
+</template>

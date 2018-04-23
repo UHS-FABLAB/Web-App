@@ -57,20 +57,31 @@ Template.filmManager.events({
   'click .film_launch': function(e, template){
     e.preventDefault();
     var currentMedia = $('.ajouter_text').attr('id')
+<<<<<<< HEAD
     //console.log(currentMedia)
+=======
+>>>>>>> master
     // Blaze.render( Template.mediaTest, $('body').get(0) );
     Blaze.renderWithData(Template.mediaTest, {_id: currentMedia}, $('body').get(0));
   },
   'click .onglet': function(e, template){
     e.preventDefault();
 
+<<<<<<< HEAD
     console.log(this, e, template)
+=======
+
+
+>>>>>>> master
     if(!$('.onglet.onglet_add').hasClass('onglet_actif')){
       $('.onglet.onglet_add').addClass('onglet_actif');
       $('.onglet.onglet_modif').removeClass('onglet_actif');
       $('.contenu_onglet_add').addClass('contenu_onglet_actif');
       $('.contenu_onglet_modif').removeClass('contenu_onglet_actif');
       $('.ajouter_text').attr('id', 'newMedia')
+<<<<<<< HEAD
     }
   }
+=======
+>>>>>>> master
 })

@@ -1,7 +1,9 @@
 <template name="filmManager">
 
 <div class="body-film-manager">
+
     <div class='application'>
+
         <div class='liste_films'>
             <div class="liste_films--title">
               <!-- TODO: Ajouter name film + id -->
@@ -22,7 +24,9 @@
                     </div>
 
                     <div class='film_details_container_right'>
-                        <div class='film_connexion_structure'></div>
+                        <div class='film_connexion_structure'>
+                            {{> questionnaireOverlay}}
+                        </div>
                         <div class='film_launch'>
                             <img src='/img/play.png'>
                         </div>
@@ -48,3 +52,5 @@
 </div>
 
 </template>
+
+
