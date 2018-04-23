@@ -1,3 +1,4 @@
+Session.setDefault('questionnaireTemplate', false)
 Template.filmManager.helpers({
   medias: function() {
     return Medias.find({filmId: this._id});
@@ -7,11 +8,11 @@ Template.filmManager.helpers({
 
 Template.filmManager.onRendered(function () {
   idFilm = this.data._id
-  console.log(idFilm, this)
+  //console.log(idFilm, this)
   $.each($('div.film'), function() {
-    console.log( ($(this).attr('id').indexOf(idFilm) > -1), $(this).attr('id'), idFilm)
+  //  console.log( ($(this).attr('id').indexOf(idFilm) > -1), $(this).attr('id'), idFilm)
     if($(this).attr('id').indexOf(idFilm) > -1){
-      console.log('okaa')
+     // console.log('okaa')
       $(this).addClass('onglet_film_actif')
     }
   })
@@ -21,8 +22,7 @@ Template.filmManager.events({
   'click .film_added_element': function(e, template){
     e.preventDefault();
 
-    console.log(this, e, template)
-
+ 
 
     if(!$('.onglet.onglet_modif').hasClass('onglet_actif')){
       $('.onglet.onglet_modif').addClass('onglet_actif');
@@ -46,7 +46,67 @@ Template.filmManager.events({
     $('#film_duration').text(this.duree)
 
     $('input.ajouter_text').attr('id', this._id)
-    console.log('this.id')
+
+            // réinitialise les champs du formulaire à null
+        
+            var formData = $('#new_question_form').serializeArray();
+            var formLength = formData.length;
+            // Tant qu'il reste des champ input ajoutés les supprime
+            while (formLength > 2){
+              $("#new_question_form").children().last().remove();
+              formLength--;
+            }
+    
+    
+    //Stocke l'id du film et l'id du media sur lequel on a cliqué.
+    Session.set("filmId",this.filmId);
+    Session.set("mediaId",this._id);
+    media_id = this._id;
+
+    //Récupère le media sur lequel on a cliqué en fonction de son id
+    //Le stocke dans une variable 
+    var mon_media = Medias.findOne({_id: media_id });
+    Session.set('media', mon_media);
+
+    //Si il existe un vote sur ce média
+    if(mon_media.voteId != undefined){
+      Session.set('isVoteExist',true);
+      //Récupère le vote associé à ce média
+      var mon_vote = Votes.findOne({_id: mon_media.voteId});
+      //Récupère les réponses associés à ce vote
+      var mes_responses = Responses.find({voteId: mon_vote._id}).fetch();
+      Session.set('responses',mes_responses);
+      
+
+      //Remplit le champs Question du formulaire avec la question du vote récupéré.
+      document.getElementById('questionId').value =mon_vote.title;
+
+      //Remplit les champs réponses du formulaire 
+
+      mes_responses.forEach(function(item) {
+        if(item.defaultChoice == true){
+          document.getElementById('answer_1').value = item.content;
+        }else{
+          $( ".new_question" ).append( '<div id="answer_'+ formLength+'"><input type="text" value="'+item.content+'"  name="answer_'+ formLength+'" placeholder="Choix n° '+ formLength +'" /></div>');
+          formLength++;
+        }
+      });
+     }
+    //Si il n'existe pas de vote associé à ce média
+     else{
+      Session.set('isVoteExist',false);
+     }
+      
+      // Affiche l'overlay
+      $(".overlay").show();
+      //console.log(Template.questionnaireOverlay);
+      console.log($('#select_media_output_1').children().length);
+      if($('#select_media_output_1').children().length>1){
+        console.log('modif');
+        $('#select_media_output_1').innerHTML='<option value="null"></option>';
+      }
+      Template.questionnaireOverlay.fillMediaOutputOptions(1);
+
   },
   'click img.add_film': function(e, template){
     e.preventDefault();
@@ -57,31 +117,23 @@ Template.filmManager.events({
   'click .film_launch': function(e, template){
     e.preventDefault();
     var currentMedia = $('.ajouter_text').attr('id')
-<<<<<<< HEAD
     //console.log(currentMedia)
-=======
->>>>>>> master
     // Blaze.render( Template.mediaTest, $('body').get(0) );
     Blaze.renderWithData(Template.mediaTest, {_id: currentMedia}, $('body').get(0));
   },
   'click .onglet': function(e, template){
     e.preventDefault();
 
-<<<<<<< HEAD
-    console.log(this, e, template)
-=======
+    //console.log(this, e, template)
 
 
->>>>>>> master
     if(!$('.onglet.onglet_add').hasClass('onglet_actif')){
       $('.onglet.onglet_add').addClass('onglet_actif');
       $('.onglet.onglet_modif').removeClass('onglet_actif');
       $('.contenu_onglet_add').addClass('contenu_onglet_actif');
       $('.contenu_onglet_modif').removeClass('contenu_onglet_actif');
       $('.ajouter_text').attr('id', 'newMedia')
-<<<<<<< HEAD
     }
+
   }
-=======
->>>>>>> master
 })
