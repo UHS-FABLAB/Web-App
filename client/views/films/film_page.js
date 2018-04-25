@@ -201,6 +201,7 @@ $(document).ready(function(){
       console.log('fin ',actual)
       // Recpu réponse depuis serveur
 
+
       $("#SourceVd").onload = function() {
           console.log( this.src );
       }

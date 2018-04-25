@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
   // code to run on server at startup
-  
+
   /* Imports for server-side startup go here. */
 
 // Configure la variable d'environement MAIL URL  pour envoyer les mails de vérification par smtp
@@ -29,7 +29,7 @@ Meteor.methods({
   sendVerificationLink() {
     let userId = Meteor.userId();
     if ( userId ) {
-      // Réécrit l'url de vérification pour supprimer le '#' ce qui permet de call la  fonction toute faite de Accounts. 
+      // Réécrit l'url de vérification pour supprimer le '#' ce qui permet de call la  fonction toute faite de Accounts.
       Accounts.urls.verifyEmail = function(token){
         return Meteor.absoluteUrl("verify-email/" + token);
       };
@@ -45,6 +45,31 @@ Meteor.publish('allFilmsByTitle', function(){
 });
 
 Zips.allow({
+    'insert': function (userId, fileObj) {
+      //  console.log("insert currentUser:" + userId);
+        //console.log(fileObj);
+
+        return userId && userId === fileObj.owner._id;
+    },
+    'download': function(userId, fileObj) {
+        return true;
+    },
+    'update': function(userId, fileObj){
+        //console.log("update currentUser:" + userId);
+
+        return userId && fileObj.owner._id === userId;
+    },
+    'remove' : function(userId, fileObj){
+        //console.log("currentUser:" + userId);
+
+        var file = Meteor.settings.public.zipFolder+fileObj.copies.zips.key;
+
+        //console.log("remove file:" + file);
+        return userId && userId === fileObj.owner._id;
+    }
+});
+
+Files.allow({
     'insert': function (userId, fileObj) {
       //  console.log("insert currentUser:" + userId);
         //console.log(fileObj);
