@@ -3,7 +3,6 @@
 <div class="body-film-manager">
 
     <div class='application'>
-        {{> questionnaireOverlay}}
 
         <div class='liste_films'>
             <div class="liste_films--title">
@@ -25,7 +24,9 @@
                     </div>
 
                     <div class='film_details_container_right'>
-                        <div class='film_connexion_structure'></div>
+                        <div class='film_connexion_structure'>
+                            {{> questionnaireOverlay}}
+                        </div>
                         <div class='film_launch'>
                             <img src='/img/play.png'>
                         </div>

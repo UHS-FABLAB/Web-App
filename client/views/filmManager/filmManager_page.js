@@ -95,9 +95,15 @@ Template.filmManager.events({
       Session.set('isVoteExist',false);
      }
       
-
       // Affiche l'overlay
       $(".overlay").show();
+      //console.log(Template.questionnaireOverlay);
+      console.log($('#select_media_output_1').children().length);
+      if($('#select_media_output_1').children().length>1){
+        console.log('modif');
+        $('#select_media_output_1').innerHTML='<option value="null"></option>';
+      }
+      Template.questionnaireOverlay.fillMediaOutputOptions(1);
 
   },
   'click img.add_film': function(e, template){

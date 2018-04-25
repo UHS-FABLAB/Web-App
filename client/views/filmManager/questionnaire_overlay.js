@@ -13,6 +13,19 @@
 
       })
 
+     Template.questionnaireOverlay.fillMediaOutputOptions = function(indiceAnswer){
+        var idFilm = $(".onglet_film_actif").attr("id");
+        idFilm = idFilm.split('_')[1];//good
+        var mediasFilmActif = Medias.find({filmId: idFilm});
+        var answerSelect = $('#select_media_output_'+indiceAnswer);
+        if($(answerSelect).children().length==1){
+        mediasFilmActif.forEach(function(index){
+          var htmlOption = '<option value="' + idFilm + '">' + index.title + '</option>';
+          $(answerSelect).append(htmlOption);
+        });
+      }
+     }
+
      Template.questionnaireOverlay.events({
         // Lorsqu'on clique sur annuler, on cache l'overlay et on vide le formulaire
       'click .btn_exit_form' : function(event){
@@ -30,8 +43,9 @@
         var formData = $('#new_question_form').serializeArray();
         var formLength = formData.length;
 
-        $( ".new_question" ).append( '<div id="answer_'+ formLength+'"><input type="text"  name="answer_'+ formLength+'" placeholder="Choix n° '+ formLength +'" /></div>');
-  
+        $( ".new_question" ).append( '<div id="answer_'+ formLength+'"><input type="text"  name="answer_'+ formLength+'" placeholder="Choix n° '+ formLength +'" /><span>Media associé :</span><select id="select_media_output_' + formLength + '"><option value="null"></option></select></div>');
+        console.log(formLength);
+        Template.questionnaireOverlay.fillMediaOutputOptions(formLength);
       },
       // Lorsqu'on clique sur le bouton "-" on supprime la dernière ligne du form si il y a un bn de réponse > 1
       'click .btn_remove_answer' : function(event){
@@ -52,15 +66,14 @@
         var isVote = Session.get('isVoteExist');
         var film_id = Session.get('filmId');
         var mon_media = Session.get('media');
-
-
+        var mediaIdReponse = $('#select_media_output_1').val();
+        var indexReponse = "";
         event.preventDefault();
 
         //Stocke les données du questionnaire sous forme d'Array
         var formData = $('#new_question_form').serializeArray();
         //Récupère la valeur de la Question
         var contentQuestion = document.getElementById("questionId").value;
-
         // Créer le vote
         var vote = {
           title: contentQuestion,
@@ -88,9 +101,13 @@
               reponse.defaultChoice=true;
             }else{
               reponse.defaultChoice=false;
+              indexReponse = $(item.name).split('_')[1];
+              mediaIdReponse = $('#select_media_output_'+indexReponse).vel();
+              reponse.mediaId=mediaIdReponse;
             }
+            reponse.mediaId=mediaIdReponse;
             reponse.content= item.value;
-            Meteor.call('responseInsert', reponse); 
+            Meteor.call('responseInsert', reponse);
 
           }
         });
