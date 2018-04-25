@@ -66,8 +66,8 @@ $('body').keyup(function(e) {
 });
 
 
-function loadWebGLGame(url){
-  let newWebGL = $('<iframe src="'+url+'"  width="100%"  height="100%"></iframe>');
+function loadWebGLGame(idBuild){
+  let newWebGL = $('<iframe src="http://localhost:3000/webgl/'+idBuild+'"  width="100%"  height="100%"></iframe>');
   let divA = $('<div class="fullscreen" id="webGL" style="display:inline-block;"></div>');
   let divB = $('<div class="divB"></div>');
 
@@ -86,9 +86,9 @@ function loadWebGLGame(url){
 
 }
 
-function loadNVP (id) {
+function loadNVP (idVIdeo) {
 
-  let newVideo = $('<video class="fullscreen" id="videoPlayer'+id+'" ><source id="SourceVd" src="http://localhost:3000/video/aGrgrTe9BRbKhtMFc/'+id+'" type="video/mp4"></video>');
+  let newVideo = $('<video class="fullscreen" id="videoPlayer'+idVIdeo+'" ><source id="SourceVd" src="http://localhost:3000/video/'+idVIdeo+'" type="video/mp4"></video>');
 console.log('oko')
 //  setTimeout(function () {
    $('.vplayer').append(newVideo);
@@ -102,7 +102,7 @@ console.log('oko')
    $('div').find('#myLoader').width('0px')
     wait = true;
    barLoader()
-   current = id
+   current = idVIdeo
   //}, 3000);
 }
 
@@ -182,15 +182,15 @@ $(document).ready(function(){
     //    console.log(pxByS, sForPx);
        var remainder = actual % sForPx;
      // console.log(remainder, pxByS, actual,sForPx)
-    //   if (remainder == 0){
+       if (remainder == 0){
         //console.log($('div').find('#myLoader'),dt,$(dt).width());
-        //actWdt = Math.round(actWdt / wdthPxPar * 100)
+        actWdt = Math.round(actWdt / wdthPxPar * 100)
         // console.log('wdt',actWdt,'pxbs', pxByS/100,'wdtmax', wdthPxPar)
         actWdt = actWdt+1
         // console.log(actWdt);
         $('div').find('#myLoader').width('' + actWdt+ 'px')
         // console.log('act wdth :', $('div').find('#myLoader').width())
-  //    }
+      }
       setTimeout(function(){
         // console.log(sForPx,actual,wdthPxPar);
         actual = elapsedTime()
@@ -243,8 +243,13 @@ $(document).ready(function(){
       // Selon la value du bouton (vid_id || wgl_id )
       // switch
       // loadNVP ou loadWebGLGame
+      var isGame = $('.videoPlayer-reponses').find('.active-button').find('i.mediaType').attr('name')
 
-      loadNVP($('.videoPlayer-reponses').find('.active-button').attr('value'))
+      if(isGame){
+        loadNVP($('.videoPlayer-reponses').find('.active-button').attr('value'))
+      }else{
+        loadWebGLGame($('.videoPlayer-reponses').find('.active-button').attr('value'))
+      }
 
       // créer le template de questionnaire
       // Lors du load préparer le questionnaire
