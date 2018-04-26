@@ -970,3 +970,15 @@
  .main.form.page{
   background-color: #cfd759;
  }
+ .popup_ajout--film_close{
+    height: 25px;
+    position: absolute;
+    display: block;
+    top: 5px;
+    background-color: #f28e2b;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+ }
