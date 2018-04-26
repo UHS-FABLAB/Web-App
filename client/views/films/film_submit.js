@@ -38,7 +38,7 @@ Template.filmSubmit.events({
 
     Blaze.remove(Blaze.currentView)
   },
-  'click i.fa.fa-times.fa-times-close': function(e) {
+  'click .popup_ajout--film_close': function(e) {
     Blaze.remove(Blaze.currentView)
   }
 });

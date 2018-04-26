@@ -7,10 +7,7 @@
 .overlay {
   display: none;
   position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  margin-top: 60px;
   z-index: 2;
   width: calc(100% - 110px);
   margin-left: auto;
@@ -667,7 +664,7 @@
 }
 .popup_ajout--film{
     position: absolute;
-    z-index: 2;
+    z-index: 1000;
     background-color: #f28e2b;
     left: calc(30% - 7.5px);/*on retire la moitié du padding*/
     top : 18%;
@@ -956,10 +953,32 @@
   justify-content: center;
   margin-top: 20px;
  }
- .refreshFirstMediaSelect img{
+ .refreshFirstMediaSelect > img{
   height: 35px;
   margin-left: 25px;
+  cursor: pointer;
+ }
+  .refreshFirstMediaSelect > img:hover{
+  opacity: 0.8;
  }
  .button_firstMedia input{
   font-size: 1.1em;
+ }
+ .filmtree_button{
+  cursor: pointer;
+ }
+ .main.form.page{
+  background-color: #cfd759;
+ }
+ .popup_ajout--film_close{
+    height: 25px;
+    position: absolute;
+    display: block;
+    top: 5px;
+    background-color: #f28e2b;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    right: 5px;
+    cursor: pointer;
  }
