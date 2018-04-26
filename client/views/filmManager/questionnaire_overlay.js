@@ -6,7 +6,6 @@
       */
      Template.questionnaireOverlay.onCreated(function bodyOnCreated() {
 
-
       Meteor.subscribe('votes');
       Meteor.subscribe("responses");
 
@@ -18,9 +17,10 @@
         idFilm = idFilm.split('_')[1];//good
         var mediasFilmActif = Medias.find({filmId: idFilm});
         var answerSelect = $('#select_media_output_'+indiceAnswer);
+        var htmlOption = "";
         if($(answerSelect).children().length==1){
         mediasFilmActif.forEach(function(index){
-          var htmlOption = '<option value="' + idFilm + '">' + index.title + '</option>';
+          htmlOption = '<option value="' + idFilm + '">' + index.title + '</option>';
           $(answerSelect).append(htmlOption);
         });
       }
@@ -32,7 +32,7 @@
         event.preventDefault();
         //cache l'overlay
         $(".overlay").hide();
-
+        Template.filmTree.switchOverlayToLink(e);
         Session.set('isVoteExist',false);
 
       },
@@ -120,7 +120,6 @@
             });
           });
 
-
         }else {
           // update le vote
           Meteor.call('voteUpdate',vote, mon_media, function(error, voteId){
@@ -132,18 +131,10 @@
               }
             });
           })
-
-
-
         }
-
-
-
-
-
         //Met fin au formulaire et cache l'overlay
        $(".overlay").hide();
-
+       Template.filmTree.switchOverlayToLink(e);
         Session.set('isVoteExist',true);
 
       }

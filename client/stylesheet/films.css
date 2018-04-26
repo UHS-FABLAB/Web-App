@@ -12,7 +12,7 @@
   bottom: 0;
   left: 0;
   z-index: 2;
-  width: 100%;
+  width: calc(100% - 110px);
   margin-left: auto;
   margin-right: auto;
 }
@@ -377,10 +377,16 @@
 .film_connexion_structure{
   position: relative;
   display: flex;
-  background-color: #cecece;
   flex-grow: 2;
   min-width: 400px;
   margin-right: 3%;
+}
+
+.film_connexion_structure_border{
+  position: relative;
+  width: calc( 100% - 8px);
+  height: calc( 100% - 8px);
+  border: solid 8px #FDC31A;
 }
 
 .film_launch{
@@ -865,4 +871,95 @@
  display: flex;
  margin-left: 20px;
  margin-right: 20px;
+ }
+ .film_tree_container{
+  display: none;
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+ }
+ .film_tree_container.active{
+  display: flex;
+ }
+ .filmtree_menu_buttons{
+  display: flex;
+  z-index: 500;
+  justify-content: space-between;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+ }
+ .filmtree_menu_button{
+  display: flex;
+  margin-left: 15px;
+ }
+ .filmtree_menu_button img{
+  display: none;
+  height: 35px;
+  width: auto;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+ }
+ .filmtree_menu_button.film_tree_menu_active img:first-child{
+  display: block!important;
+  height: 40px!important;
+ }
+ .filmtree_menu_button.film_tree_menu_active img:last-child{
+  display: none!important;
+ }
+ .filmtree_menu_button img:last-child{
+  display: block!important;
+ }
+ .no_media_in_film{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  margin-top: 60px;
+  font-size: 1.1em;
+ }
+ .no_media_in_film form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin-top: 30px;
+ }
+  .no_media_in_film form div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 30px;
+ }
+ .no_media_in_film form select{
+  min-width: 130px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 1.1em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+ }
+ .no_media_accueil{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ }
+ .refreshFirstMediaSelect{
+  display: flex;
+  color : red;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+ }
+ .refreshFirstMediaSelect img{
+  height: 35px;
+  margin-left: 25px;
+ }
+ .button_firstMedia input{
+  font-size: 1.1em;
  }

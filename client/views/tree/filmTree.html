@@ -1,3 +1,34 @@
 <template name="filmTree">
-<div>Arbre des dépendances</div>
+	<div class='filmtree_menu_buttons'>
+		<div class='filmtree_menu_button filmliaison_button'>
+			<img src='/img/link_on.png'/>
+			<img src='/img/link.png'/>
+		</div>
+		<div class='filmtree_menu_button film_tree_menu_active filmtree_button'>
+			<img src='/img/share_on.png'/>
+			<img src='/img/share.png'/>
+		</div>
+	</div>
+	<div class='film_tree_container active'>
+		<div class='no_media_in_film'>
+			<div class='no_media_accueil'>
+				<span>Commencez par choisir la première scène/jeu parmi la liste suivante :</span>
+				<span class='refreshFirstMediaSelect'>
+					<span>Veuillez rafraîchir la sélection ! </span>
+					<img src='/img/refresh.png'/>
+				</span>
+			</div>
+			<form id="firstMedia">
+				<div>
+					<label>Titre du média :</label>
+					<select id="select_firstMedia">
+	                  <option value="nullVal"></option>
+	                </select>
+	            </div>
+                <div class="button_firstMedia">
+                      <input type='submit'  class="ajouter_text" id="submitFirstMedia" value="Ajouter">
+                  </div>
+			</form>
+		</div>
+	</div>
 </template>
