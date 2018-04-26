@@ -6,7 +6,6 @@
       */
      Template.questionnaireOverlay.onCreated(function bodyOnCreated() {
 
-
       Meteor.subscribe('votes');
       Meteor.subscribe("responses");
 
@@ -121,7 +120,6 @@
             });
           });
 
-
         }else {
           // update le vote
           Meteor.call('voteUpdate',vote, mon_media, function(error, voteId){
@@ -133,15 +131,7 @@
               }
             });
           })
-
-
-
         }
-
-
-
-
-
         //Met fin au formulaire et cache l'overlay
        $(".overlay").hide();
        Template.filmTree.switchOverlayToLink(e);
