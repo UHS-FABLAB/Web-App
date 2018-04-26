@@ -1,10 +1,9 @@
 Template.surveyFilmOverlay.helpers({
-  submittedText: function() {
-    return this.submitted.toString();
-  }
+
 });
 
 Template.surveyFilmOverlay.helpers({
-
-
+  responses: function() {
+    return Responses.find({voteId: this._id});
+  }
 })

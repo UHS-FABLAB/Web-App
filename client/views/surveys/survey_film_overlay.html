@@ -4,17 +4,9 @@
       {{content}}
     </div>
     <div class="videoPlayer-reponses">
-      {{#each questions}}
-        {{> questionItem}}
+      {{#each responses}}
+        {{> responseItem}}
       {{/each}}
-      <div class="videoPlayer-reponse" value="2">
-        Aux chambres à gaz
-        <i style="display:none;" name="true"></i>
-      </div>
-      <div class="videoPlayer-reponse" value="1">
-        A faire de la cuisine
-        <i style="display:none;" name="false"></i>
-      </div>
     </div>
   </div>
 </template>

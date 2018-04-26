@@ -13,23 +13,32 @@ var uploadFileAfterInsert = function(_idMedia, _filetype){
   //
 
 
-  var file = $("input.image-bug")[0].files[0];
+  var file;
 
-  console.log(file);
+  if(_filetype){
+    file = $("input.image-bug.webgl-upload-manager")[0].files[0];
+  }else {
+    file = $("input.image-bug.video-upload-manager")[0].files[0];
+  }
+
+
+  console.log(file, _filetype);
 
   var fileObj = new FS.File(file);
   console.log('oo')
   fileObj.title = _idMedia;
   fileObj.owner = Meteor.user();
+  fileObj.width = 1600;
+  fileObj.height = 1200;
   console.log(fileObj)
 
-  if(_filetype){
+  if(!_filetype){
+    console.log('insert file');
     Files.insert(fileObj,function(err){
         Medias.update(media.fileId, {$set: {fileId: fileObj.id}});
     });
   }else {
-    fileObj.width = 1600;
-    fileObj.height = 1200;
+    console.log("insert zip")
     Zips.insert(fileObj,function(err){
         Medias.update(media.fileId, {$set: {fileId: fileObj.id}});
     });
@@ -109,15 +118,27 @@ Template.mediaSubmit.events({
       isGameOrVideo = true
     }
 
-    var urlMedia = $("input.image-bug").val().split("\\")[$('#upload_film').val().split("\\").length-1]
+    var urlMedia= ""
+    var descriptionM = "";
+    var titleM = "";
+    if(isGameOrVideo){
+      descriptionM = $('#description_jeu').val();
+      titleM = $('#titre_jeu').val();
+      urlMedia = $("input.image-bug.webgl-upload-manager").val().split("\\")[$('input.image-bug.webgl-upload-manager').val().split("\\").length-1]
+    }else {
+      descriptionM = $('#description_film').val();
+      titleM = $('#titre_film').val();
+      urlMedia = $("input.image-bug.video-upload-manager").val().split("\\")[$('input.image-bug.video-upload-manager').val().split("\\").length-1]
+    }
+
     console.log(urlMedia)
     var media = {
-      title: $('#titre_film').val(),
+      title: titleM,
       duree: videoDuration,
       isGame: isGameOrVideo,
       url: urlMedia,
       alt: urlMedia,
-      description: $('#description_film').val(),
+      description: descriptionM,
       filmId: template.data._id
     };
 
