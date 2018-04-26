@@ -664,7 +664,7 @@
 }
 .popup_ajout--film{
     position: absolute;
-    z-index: 2;
+    z-index: 1000;
     background-color: #f28e2b;
     left: calc(30% - 7.5px);/*on retire la moitié du padding*/
     top : 18%;
