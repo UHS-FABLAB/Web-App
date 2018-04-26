@@ -6,7 +6,7 @@
       */
      Template.questionnaireOverlay.onCreated(function bodyOnCreated() {
 
-    
+
       Meteor.subscribe('votes');
       Meteor.subscribe("responses");
 
@@ -56,8 +56,8 @@
         if(formLength > 2){
          $("#new_question_form").children().last().remove();
         }
-        
-  
+
+
       },
 
       // Lorsqu'on valide le formulaire
@@ -68,6 +68,7 @@
         var mon_media = Session.get('media');
         var mediaIdReponse = $('#select_media_output_1').val();
         var indexReponse = "";
+        var idMedia = Session.get('mediaId');
         event.preventDefault();
 
         //Stocke les données du questionnaire sous forme d'Array
@@ -85,54 +86,64 @@
         var reponse = {
           content: "",
           defaultChoice: false,
-          mediaId: mon_media._id,
+          mediaId: "",
           voteId: ""
         }
 
         // Check si un vote existe déjà pour ce film, si oui l'update sinon l'insert dans la BDD
         if(!isVote){
           //insert le vote
-          Meteor.call('voteInsert', vote, mon_media);
+          Meteor.call('voteInsert', vote, mon_media, function(error, voteId) {
+            Medias.update(idMedia, {$set: {voteId: voteId }});
+            // Pour chaque réponse, si la réponse n'est pas vide créer une réponse dans la bdd
+            console.log(formData)
+            $.each(formData, function(idx, item) {
+              console.log(item)
+              if(item.name!="question"){
+                if(item.name == "answer_1"){
+                  reponse.defaultChoice=true;
+                }else{
+                  reponse.defaultChoice=false;
+                  indexReponse = item.name.split('_')[1];
+                  mediaIdReponse = $('#select_media_output_'+indexReponse).val();
+                  reponse.mediaId=mediaIdReponse;
+                }
+                reponse.voteId = voteId
+                reponse.mediaId=mediaIdReponse;
+                reponse.content= item.value;
+                Meteor.call('responseInsert', reponse,function (error, responseId) {
 
-        // Pour chaque réponse, si la réponse n'est pas vide créer une réponse dans la bdd
-        formData.forEach(function(item) {
-          if(item.name!="question"){
-            if(item.name == "answer_1"){
-              reponse.defaultChoice=true;
-            }else{
-              reponse.defaultChoice=false;
-              indexReponse = $(item.name).split('_')[1];
-              mediaIdReponse = $('#select_media_output_'+indexReponse).vel();
-              reponse.mediaId=mediaIdReponse;
-            }
-            reponse.mediaId=mediaIdReponse;
-            reponse.content= item.value;
-            Meteor.call('responseInsert', reponse);
+                  console.log(error, responseId)
+                });
 
-          }
-        });
+              }
+            });
+          });
+
 
         }else {
           // update le vote
-          Meteor.call('voteUpdate',vote, mon_media)   
+          Meteor.call('voteUpdate',vote, mon_media, function(error, voteId){
+            //update les réponses
+            var arrayResponses = Session.get('responses');
+            formData.forEach(function(item) {
+              if(item.name!="question"){
 
-          //update les réponses
-          var arrayResponses = Session.get('responses');
-          formData.forEach(function(item) {
-            if(item.name!="question"){
-              
-            }
-          });
+              }
+            });
+          })
+
+
 
         }
 
-        
+
 
 
 
         //Met fin au formulaire et cache l'overlay
        $(".overlay").hide();
-       
+
         Session.set('isVoteExist',true);
 
       }
