@@ -119,10 +119,10 @@ Template.filmManager.events({
       
       // Affiche l'overlay
       $(".overlay").show();
-      //console.log(Template.questionnaireOverlay);
-      console.log($('#select_media_output_1').children().length);
+      //switch menu button
+      Template.filmTree.switchOverlayToLink(e);
+      //Initialise la sélection media de suite
       if($('#select_media_output_1').children().length>1){
-        console.log('modif');
         $('#select_media_output_1').innerHTML='<option value="null"></option>';
       }
       Template.questionnaireOverlay.fillMediaOutputOptions(1);
@@ -157,7 +157,6 @@ Template.filmManager.events({
 
   },
   'click .arrow_button_list_added': function(e, template) {
-      console.log('clicked');
       e.preventDefault();
     if($(e.currentTarget).hasClass('arrow_button_right')){
       scrollMediaListRight();
