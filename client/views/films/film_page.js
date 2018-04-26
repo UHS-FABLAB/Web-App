@@ -1,8 +1,18 @@
 Template.filmPage.helpers({
   sequences: function() {
     return Sequences.find({filmId: this._id});
+  },
+  monQuestionnaire: function(){
+    console.log(this.firstMediaId)
+    var q = Medias.findOne({_id: this.firstMediaId});
+    console.log(q, q.voteId)
+    return q.voteId;
   }
 });
+
+
+
+
 
 
 Template.filmPage.events({
@@ -256,7 +266,7 @@ $(document).ready(function(){
       console.log(nexQuestio)
       // Lors du load préparer le questionnaire
       // Charger le template avec les questions et les values ( foreach )
-      Blaze.renderWithData(Template.surveyFilmOverlay, {_id: nexQuestio._id}, $('body').get(0));
+      Blaze.renderWithData(Template.questionFilmOverlay, {_id: nexQuestio._id}, $('body').get(0));
 
 
       // Au sein du inner fullscreen append en display none

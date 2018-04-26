@@ -81,7 +81,7 @@
           content: contentQuestion,
           duree: 10,
           filmId: film_id
-
+          
         };
         var reponse = {
           content: "",

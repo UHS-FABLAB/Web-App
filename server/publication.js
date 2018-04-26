@@ -32,3 +32,9 @@ Meteor.publish('votes', function() {
 Meteor.publish('responses', function() {
   return Responses.find();
 });
+
+Meteor.publish('allResponses', function(voteId) {
+  check(voteId, String);
+  console.log(voteId)
+  return Responses.find({voteId: voteId});
+});

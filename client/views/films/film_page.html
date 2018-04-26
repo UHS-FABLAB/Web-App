@@ -15,11 +15,11 @@
       <div class="inner-fullscreen">
         <div class="vplayer">
           <video id="videoPlayer2" class="fullscreen">
-            <source id="SourceVd" src="/video/{{media.fileId}}" type="video/mp4">
+            <source id="SourceVd" src="/video/{{firstMediaId}}" type="video/mp4">
           </video>
         </div>
-        <div class="videoPlayer-choix" style="display:none;">
-          {{> surveyFilmOverlay}}
+        <div class="videoPlayer-choix" id="question_{{monQuestionnaire}}">
+          {{> questionFilmOverlay idQ=monQuestionnaire}}
           <div class="videoPlayer-bloc-loader">
             <div class="loader-line" id="myLoader">
 
