@@ -243,20 +243,24 @@ $(document).ready(function(){
       // Selon la value du bouton (vid_id || wgl_id )
       // switch
       // loadNVP ou loadWebGLGame
-      var isGame = $('.videoPlayer-reponses').find('.active-button').find('i.mediaType').attr('name')
-
+      var isGame = $('.videoPlayer-reponses').find('.active-button').find('i.mediaId').attr('name');
+      var myNextIdMed = $('.videoPlayer-reponses').find('.active-button').find('i.mediaId').attr('id');
       if(isGame){
-        loadNVP($('.videoPlayer-reponses').find('.active-button').attr('value'))
+        loadNVP(myNextIdMed)
       }else{
-        loadWebGLGame($('.videoPlayer-reponses').find('.active-button').attr('value'))
+        loadWebGLGame(myNextIdMed)
       }
 
-      // créer le template de questionnaire
+      // Récupération du questionnaire
+      var nexQuestio = Questions.Find({mediaId: myNextIdMed})
+      console.log(nexQuestio)
       // Lors du load préparer le questionnaire
       // Charger le template avec les questions et les values ( foreach )
+      Blaze.renderWithData(Template.surveyFilmOverlay, {_id: nexQuestio._id}, $('body').get(0));
+
+
       // Au sein du inner fullscreen append en display none
       // réinitialiser les Controles boutons
-
 
 
 

@@ -35,12 +35,12 @@ var uploadFileAfterInsert = function(_idMedia, _filetype){
   if(!_filetype){
     console.log('insert file');
     Files.insert(fileObj,function(err){
-        Medias.update(media.fileId, {$set: {fileId: fileObj.id}});
+        Medias.update(_idMedia, {$set: {fileId: fileObj.id}});
     });
   }else {
     console.log("insert zip")
     Zips.insert(fileObj,function(err){
-        Medias.update(media.fileId, {$set: {fileId: fileObj.id}});
+        Medias.update(_idMedia, {$set: {fileId: fileObj.id}});
     });
   }
 
