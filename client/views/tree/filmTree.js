@@ -7,9 +7,9 @@ Template.filmTree.events({
 'click .filmtree_button': function(e, template){
       Template.filmTree.switchOverlayToTree(e);
   },
-  'click .refreshFirstMediaSelect': function(e, template){
+  'click .refreshFirstMediaSelect > img': function(e, template){
       Template.filmTree.fillFirstMediaOptions();
-      Template.filmTree.removeFirstMediaSubmitIfExist();
+      Template.filmTree.removeFirstMediaSubmitViewIfExist();
   },
   'click .button_firstMedia': function(e, template){
       Template.filmTree.validateFirstMediaSubmit();   
@@ -42,7 +42,6 @@ Template.filmTree.switchOverlayToLink = function(e){
 
 Template.filmTree.fillFirstMediaOptions = function(){
   var idFilm = $(".onglet_film_actif").attr("id");
-  console.log($(".onglet_film_actif").attr("id"));
   idFilm = idFilm.split('_')[1];
   var mediasFilmActif = Medias.find({filmId: idFilm});
   var answerSelect = $('#select_firstMedia');
@@ -56,17 +55,20 @@ Template.filmTree.fillFirstMediaOptions = function(){
 }
 
 Template.filmTree.validateFirstMediaSubmit = function(){
-  var film_id = Session.get('filmId');
-  var filmActuel = Films.find({filmId: film_id});
+  var idFilm = $(".onglet_film_actif").attr("id");
+  idFilm = idFilm.split('_')[1];//good
+  var filmActuel = Films.findOne({_id: idFilm});
   var mon_media_id = $('#select_firstMedia').val();
   if(mon_media_id!='nullVal'){
-    filmActuel.update(film_id, {$set: {firstMediaId: mon_media_id}});
+    Films.update(idFilm, {$set: {firstMediaId: mon_media_id}});
   }
 }
 
-Template.filmTree.removeFirstMediaSubmitIfExist = function(){
-  var film_id = Session.get('filmId');
-  var filmActuel = Films.find({filmId: film_id});
+Template.filmTree.removeFirstMediaSubmitViewIfExist = function(){
+  var idFilm = $(".onglet_film_actif").attr("id");
+  idFilm = idFilm.split('_')[1];//good
+  console.log(idFilm);
+  var filmActuel = Films.findOne({_id: idFilm});
   var idMediaFirst = filmActuel.firstMediaId;
   console.log(idMediaFirst);
   if(idMediaFirst!=null){
