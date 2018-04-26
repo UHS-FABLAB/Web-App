@@ -1,5 +1,6 @@
 {
   "public": {
-    "zipFolder": "./uploads/"
+    "zipFolder": "./uploads/zip/",
+    "videoFolder": "./uploads/video/"
   }
 }

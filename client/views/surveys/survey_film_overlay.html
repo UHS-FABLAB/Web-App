@@ -1,0 +1,12 @@
+<template name="surveyFilmOverlay">
+  <div class="videoPlayer-bloc-question">
+    <div class="videoPlayer-question" >
+      {{content}}
+    </div>
+    <div class="videoPlayer-reponses">
+      {{#each responses}}
+        {{> responseItem}}
+      {{/each}}
+    </div>
+  </div>
+</template>

@@ -15,23 +15,11 @@
       <div class="inner-fullscreen">
         <div class="vplayer">
           <video id="videoPlayer2" class="fullscreen">
-            <source id="SourceVd" src="/video/aGrgrTe9BRbKhtMFc/1" type="video/mp4">
+            <source id="SourceVd" src="/video/{{media.fileId}}" type="video/mp4">
           </video>
         </div>
-        <div class="videoPlayer-choix">
-          <div class="videoPlayer-bloc-question">
-            <div class="videoPlayer-question" >
-              A quoi va servir le Zyklon B ?
-            </div>
-            <div class="videoPlayer-reponses">
-              <div class="videoPlayer-reponse" value="2">
-                Aux chambres à gaz
-              </div>
-              <div class="videoPlayer-reponse" value="1">
-                A faire de la cuisine
-              </div>
-            </div>
-          </div>
+        <div class="videoPlayer-choix" style="display:none;">
+          {{> surveyFilmOverlay}}
           <div class="videoPlayer-bloc-loader">
             <div class="loader-line" id="myLoader">
 
