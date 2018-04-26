@@ -29,6 +29,6 @@ Meteor.publish('votes', function() {
 });
 
 
-Meteor.publish('responses', function() {
-  return Responses.find();
+Meteor.publish('responses', function(voteId) {
+  return Responses.find({voteId: voteId});
 });
