@@ -32,7 +32,7 @@
         event.preventDefault();
         //cache l'overlay
         $(".overlay").hide();
-        Template.filmTree.switchOverlayToLink(e);
+        Template.filmTree.switchOverlayToLink(event);
         Session.set('isVoteExist',false);
 
       },
@@ -134,7 +134,7 @@
         }
         //Met fin au formulaire et cache l'overlay
        $(".overlay").hide();
-       Template.filmTree.switchOverlayToLink(e);
+       Template.filmTree.switchOverlayToLink(event);
         Session.set('isVoteExist',true);
 
       }

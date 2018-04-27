@@ -9,22 +9,6 @@ Template.filmPage.helpers({
     return q.voteId;
   }
 });
-
-
-
-
-
-
-Template.filmPage.events({
-  'click .videoPlayer-reponse': function (e) {
-    console.log()
-    $('.active-button').removeClass('active-button')
-    $(e.currentTarget).addClass('active-button')
-  //  $(this).addClass('.active-button')
-    console.log("You pressed the button");
-  }
-})
-
 var barLoader;
 var wait = true;
 // Vidéo actuelle
@@ -32,58 +16,16 @@ var current = 2
 // Statut de la vidéo
 var videoStatus = 1;
 
-
-// Controles du lecteur
-$('body').keyup(function(e) {
-  if(e.keyCode == 8){
-    $('video').each( function () {
-      if (videoStatus == 0) {
-        this.play();
-        videoStatus = 1;
-      }else {
-        this.pause();
-        videoStatus = 0;
-      }
-    });
-   }
-   if(e.keyCode == 32){
-     $('video').each( function () {
-       if (videoStatus == 0) {
-         this.play();
-         videoStatus = 1;
-       }else {
-         this.pause();
-         videoStatus = 0;
-       }
-     });
-   }
-   // Monter le volume
-   if (e.keyCode == 38) {
-     $('video').each( function () {
-       if (this.volume < 1) {
-        this.volume  = this.volume + 0.2;
-      }
-     });
-   }
-   // Baisser le volume
-   if (e.keyCode == 40) {
-    $('video').each( function () {
-      if (this.volume  > 0) {
-        this.volume  = this.volume - 0.2;
-      }
-    });
-   }
-});
-
-
 function loadWebGLGame(idBuild){
-  let newWebGL = $('<iframe src="http://localhost:3000/webgl/'+idBuild+'"  width="100%"  height="100%"></iframe>');
+  //let newWebGL = $('<iframe src="http://localhost:3000/webgl/'+idBuild+'"  width="100%"  height="100%"></iframe>');
   let divA = $('<div class="fullscreen" id="webGL" style="display:inline-block;"></div>');
   let divB = $('<div class="divB"></div>');
-
-  divB.append(newWebGL);
   divA.append(divB)
   $('body').append(divA);
+  Blaze.renderWithData(Template.play, {_id: idBuild}, $('#webGL').get(0));
+
+  // divB.append(newWebGL);
+
   idNXV = 3;
 
   setTimeout(function () {
@@ -151,7 +93,8 @@ $(document).ready(function(){
           : el[0]['client'+size.substr(0,1).toUpperCase() + size.substr(1)] + 'px';
   }
 
-  if ($('#videoPlayer').length > 0) {
+  if ($('#videoPlayer2').length > 0) {
+    console.log('ok video player')
     barLoader = function(){
 
       launchTime = new Date();
@@ -279,13 +222,78 @@ $(document).ready(function(){
 
   setTimeout(function(){
     console.log('go');
-  if (typeof barLoader == 'function') {
-    barLoader()
-  }
-}, 1000);
+    if (typeof barLoader == 'function') {
+      console.log('gogogogogo')
+      barLoader()
+    }
+  }, 5000);
 
 
 });
+//
+// Template.questionFilmOverlay.onRendered(function () {
+//   barLoader();
+// });
+
+
+
+
+Template.filmPage.events({
+  'click .videoPlayer-reponse': function (e) {
+    console.log()
+    $('.active-button').removeClass('active-button')
+    $(e.currentTarget).addClass('active-button')
+  //  $(this).addClass('.active-button')
+    console.log("You pressed the button");
+  }
+})
+
+
+
+
+// Controles du lecteur
+$('body').keyup(function(e) {
+  if(e.keyCode == 8){
+    $('video').each( function () {
+      if (videoStatus == 0) {
+        this.play();
+        videoStatus = 1;
+      }else {
+        this.pause();
+        videoStatus = 0;
+      }
+    });
+   }
+   if(e.keyCode == 32){
+     $('video').each( function () {
+       if (videoStatus == 0) {
+         this.play();
+         videoStatus = 1;
+       }else {
+         this.pause();
+         videoStatus = 0;
+       }
+     });
+   }
+   // Monter le volume
+   if (e.keyCode == 38) {
+     $('video').each( function () {
+       if (this.volume < 1) {
+        this.volume  = this.volume + 0.2;
+      }
+     });
+   }
+   // Baisser le volume
+   if (e.keyCode == 40) {
+    $('video').each( function () {
+      if (this.volume  > 0) {
+        this.volume  = this.volume - 0.2;
+      }
+    });
+   }
+});
+
+
 
 
 

@@ -23,6 +23,10 @@ Meteor.publish('films', function(title) {
   return Films.find({flagged: false, title: title});
 });
 
+Meteor.publish('votes', function() {
+  return Votes.find();
+});
+
 Meteor.methods({
 
   // Fonction qui envoie un mail de vérification.
