@@ -74,19 +74,22 @@
         var formData = $('#new_question_form').serializeArray();
         var formLength = formData.length;
 
-        $( ".new_question" ).append( '<div id="answer_'+ formLength+'"><input type="text"  name="answer_'+ formLength+'" placeholder="Choix n° '+ formLength +'" /><span>Media associé :</span><select id="select_media_output_' + formLength + '"><option value="null"></option></select></div>');
-        //console.log(formLength);
+        $( ".new_question" ).append( '<div id="answer_'+ formLength+'"><input type="text"  name="answer_'+ formLength+'" placeholder="Choix n° '+ formLength +'" /></div><span>Media associé :</span><select id="select_media_output_' + formLength + '"><option value="null"></option></select></div>');
         Template.questionnaireOverlay.fillMediaOutputOptions(formLength);
       },
       // Lorsqu'on clique sur le bouton "-" on supprime la dernière ligne du form si il y a un bn de réponse > 1
       'click .btn_remove_answer' : function(event){
         event.preventDefault();
-        var formData = $('#new_question_form').serializeArray();
-        var formLength = formData.length;
+        var i = 0;
+        while(i<3){
+          var formData = $('#new_question_form').serializeArray();
+          var formLength = formData.length;
 
         if(formLength > 2){
          $("#new_question_form").children().last().remove();
         }
+        i++;
+      }
 
 
       },
