@@ -18,7 +18,7 @@ Template.buildPage.events({'click #removeBuild': function(event) {
 
     var form = $(".build-page-form")[0];
 
-    console.log(form);
+   // console.log(form);
 
     var id = Router.current().params._id;
 
@@ -30,7 +30,7 @@ Template.buildPage.events({'click #removeBuild': function(event) {
         }
     }, function(err){
         if(err) console.log("ERR");
-        console.log("ok");
+        //console.log("ok");
     });
 }
 });

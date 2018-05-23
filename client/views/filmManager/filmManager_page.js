@@ -1,4 +1,6 @@
-Session.setDefault('questionnaireTemplate', false)
+Session.setDefault('questionnaireTemplate', false);
+Session.setDefault('isVoteExist', false);
+
 Template.filmManager.helpers({
   medias: function() {
     return Medias.find({filmId: this._id});
@@ -22,7 +24,7 @@ Template.filmManager.onRendered(function () {
 function scrollMediaListLeft(){
   var currentPos = $('.film_list_container').scrollLeft();
   var longueurTotal = $('.film_list_container').width();
-  console.log(currentPos);
+  //console.log(currentPos);
   var longueurElement = $('.film_added_element').first().width();
   if($('.film_list_container').scrollLeft()!=0){
     $('.film_list_container').animate({scrollLeft: currentPos -longueurElement*2}, 800,function(){$('.film_list_container').clearQueue();});
@@ -32,7 +34,7 @@ function scrollMediaListLeft(){
 function scrollMediaListRight(){
   var currentPos = $('.film_list_container').scrollLeft();
   var longueurTotal = $('.film_list_container').width();
-  console.log(currentPos);
+  //console.log(currentPos);
   var longueurTotal = $('.film_list_container').width();
   var longueurElement = $('.film_added_element').first().width();
   $('.film_list_container').animate({scrollLeft: currentPos + longueurElement*2}, 800,function(){$('.film_list_container').clearQueue();});
@@ -42,7 +44,8 @@ Template.filmManager.events({
   'click .film_added_element': function(e, template){
     e.preventDefault();
 
- 
+    Session.set('isVoteExist',false);
+
 
     if(!$('.onglet.onglet_modif').hasClass('onglet_actif')){
       $('.onglet.onglet_modif').addClass('onglet_actif');
@@ -66,18 +69,20 @@ Template.filmManager.events({
     $('#film_duration').text(this.duree)
 
     $('input.ajouter_text').attr('id', this._id)
-
             // réinitialise les champs du formulaire à null
-        
+
             var formData = $('#new_question_form').serializeArray();
             var formLength = formData.length;
             // Tant qu'il reste des champ input ajoutés les supprime
             while (formLength > 2){
               $("#new_question_form").children().last().remove();
-              formLength--;
+              $("#new_question_form").children().last().remove();
+              $("#new_question_form").children().last().remove();
+
+              formLength --;
             }
-    
-    
+
+            
     //Stocke l'id du film et l'id du media sur lequel on a cliqué.
     Session.set("filmId",this.filmId);
     Session.set("mediaId",this._id);
@@ -91,29 +96,32 @@ Template.filmManager.events({
     //Si il existe un vote sur ce média
     if(mon_media.voteId != undefined){
       Session.set('isVoteExist',true);
+
       //Récupère le vote associé à ce média
       var mon_vote = Votes.findOne({_id: mon_media.voteId});
       //Récupère les réponses associés à ce vote
       var mes_responses = Responses.find({voteId: mon_vote._id}).fetch();
+    
       Session.set('responses',mes_responses);
       
 
-      //Remplit le champs Question du formulaire avec la question du vote récupéré.
-      document.getElementById('questionId').value =mon_vote.title;
-
       //Remplit les champs réponses du formulaire 
 
-      mes_responses.forEach(function(item) {
+      mes_responses.forEach(function(item,i) {
+       
         if(item.defaultChoice == true){
-          document.getElementById('answer_1').value = item.content;
+          $("#answer_1").val(item.content);
         }else{
-          $( ".new_question" ).append( '<div id="answer_'+ formLength+'"><input type="text" value="'+item.content+'"  name="answer_'+ formLength+'" placeholder="Choix n° '+ formLength +'" /></div>');
+          $( ".new_question" ).append( '<div id="answer_'+ formLength+'"><input type="text" value="'+item.content+'"  name="answer_'+ formLength+'" placeholder="Choix n° '+ formLength +'" /></div><span>Media associé :</span><select id="select_media_output_' + formLength + '"><option value="null"></option></select></div>');
+          Template.questionnaireOverlay.fillMediaOutputOptionsV2(formLength,item.media_id);
           formLength++;
         }
       });
      }
     //Si il n'existe pas de vote associé à ce média
+    //Vide le forumlaire
      else{
+      $('#new_question_form')[0].reset();
       Session.set('isVoteExist',false);
      }
       
@@ -121,16 +129,16 @@ Template.filmManager.events({
       $(".overlay").show();
       //switch menu button
       Template.filmTree.switchOverlayToLink(e);
-      //Initialise la sélection media de suite
-      if($('#select_media_output_1').children().length>1){
-        $('#select_media_output_1').innerHTML='<option value="null"></option>';
-      }
-      Template.questionnaireOverlay.fillMediaOutputOptions(1);
+      // Initialise la sélection media de suite
+      // if($('#select_media_output_1').children().length>1){
+      //   $('#select_media_output_1').innerHTML='<option value="null"></option>';
+      // }
+      //  Template.questionnaireOverlay.fillMediaOutputOptions(1);
 
   },
   'click img.add_film': function(e, template){
     e.preventDefault();
-
+ 
     var templateName = "film_submit";
     Blaze.render( Template.filmSubmit, $('body').get(0) );
   },

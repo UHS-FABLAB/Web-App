@@ -11,16 +11,23 @@
                         <form class="new_question" id="new_question_form">
 
                                 <div>
+                                    {{#if isVoteExist}}
+                                    <input type="text" id="questionId" name="question" placeholder="Entrez votre question ici" value="{{vote}}" />
+                                    {{else}}
                                     <input type="text" id="questionId" name="question" placeholder="Entrez votre question ici" />
-                                </div>
-                                <div>
-                                    <input type="text" id ="answer_1" name="answer_1" placeholder="Choix par défaut" />
-                                    <span>Media associé :</span>
-                                    <select id="select_media_output_1">
-                                      <option value="nullVal"></option>
-                                    </select>
+                                    {{/if}}
+
                                 </div>
 
+                                <div>
+                                    <input type="text" id ="answer_1" name="answer_1" placeholder="Choix par défaut"/>
+                                        <span>Media associé :</span>
+                                        <select id="select_media_output_1">
+                                            {{#each medias}}
+                                                <option value="{{_id}}">{{title}}</option>
+                                            {{/each}}
+                                        </select>
+                                      </div>
                          </form>
                     
                  </div>
@@ -33,4 +40,7 @@
         </template>
         
         
-        
+
+                
+                
+                

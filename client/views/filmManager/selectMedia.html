@@ -1,0 +1,10 @@
+<template name="selectMedia">
+    <div>
+        <span>Media associé :</span>
+        <select id="select_media_output_{{number}}">
+            {{#each medias}}
+            <option value="{{_id}}">{{tittle}}</option>
+            {{/each}}
+        </select>
+      </div>
+</template>

@@ -29,11 +29,11 @@ if (Meteor.isClient) {
                 
             }, function(error){
                 if (error){
-                    console.log(error);
+                    //console.log(error);
                 }else {
                     Meteor.call('sendVerificationLink',(error,response) => {
                         if (error){
-                            console.log(error);
+                            //console.log(error);
                         }
                     })
                 }
