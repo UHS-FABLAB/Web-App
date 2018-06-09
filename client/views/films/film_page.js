@@ -208,9 +208,15 @@ Template.filmPage.onRendered( function(){
       // Selon la value du bouton (vid_id || wgl_id )
       // switch
       // loadNVP ou loadWebGLGame
-      var isGame = $('.videoPlayer-reponses').find('.active-button').find('input.mediaId').attr('name');
+    //  var isGame = $('.videoPlayer-reponses').find('.active-button').find('input.mediaId').attr('name');
       var myNextIdMed = $('.videoPlayer-reponses').find('.active-button').find('input.mediaId').attr('id');
+      myNextIdMed = myNextIdMed.split('_')
+      var isGame = myNextIdMed[1]
+      var myNextIdMed = myNextIdMed[0]
       console.log(isGame,myNextIdMed)
+      if(typeof isGame == 'undefined'){
+        isGame = true
+      }
 
       if(isGame){
         loadNVP(myNextIdMed)
@@ -220,7 +226,7 @@ Template.filmPage.onRendered( function(){
       console.log(currTemplateData, myNextIdMed)
 
       // Récupération du questionnaire
-      Meteor.call('questionGetOneByMedia', myNextIdMed, function(error, nexQuestio){
+      Meteor.call('voteGetOneByMedia', myNextIdMed, function(error, nexQuestio){
             console.log(nexQuestio)
         // Lors du load préparer le questionnaire
         // Charger le template avec les questions et les values ( foreach )
