@@ -1,3 +1,5 @@
+var current = 0
+
 Template.filmPage.helpers({
   sequences: function() {
     return Sequences.find({filmId: this._id});
@@ -5,6 +7,7 @@ Template.filmPage.helpers({
   monQuestionnaire: function(){
     console.log(this.firstMediaId)
     var q = Medias.findOne({_id: this.firstMediaId});
+
     console.log(q, q.voteId)
     return q.voteId;
   }
@@ -12,7 +15,7 @@ Template.filmPage.helpers({
 var barLoader;
 var wait = true;
 // Vidéo actuelle
-var current = 2
+var currTemplateData;
 // Statut de la vidéo
 var videoStatus = 1;
 
@@ -40,11 +43,12 @@ function loadWebGLGame(idBuild){
 
 function loadNVP (idVIdeo) {
 
-  let newVideo = $('<video class="fullscreen" id="videoPlayer'+idVIdeo+'" ><source id="SourceVd" src="http://localhost:3000/video/'+idVIdeo+'" type="video/mp4"></video>');
+  let newVideo = $('<video class="fullscreen" id="videoPlayer'+idVideo+'" ><source id="SourceVd" src="http://localhost:3000/video/'+idVIdeo+'" type="video/mp4"></video>');
 console.log('oko')
 //  setTimeout(function () {
-   $('.vplayer').append(newVideo);
    $('#videoPlayer'+current+'').remove();
+   $('.vplayer').append(newVideo);
+
    $('#webGL').remove()
    newVideo.show();
    $('.videoPlayer-choix').hide()
@@ -60,6 +64,7 @@ console.log('oko')
 
   var launchTime = "";
   var actual = 0;
+  var actWdt = 50 ;
 
   function elapsedTime() {
     // later record end time
@@ -78,12 +83,15 @@ console.log('oko')
     return actual;
   }
 
-$(document).ready(function(){
 
+Template.filmPage.onRendered( function(){
   $('videoPlayer-reponse').click(function () {
 
     alert('ok')
   })
+
+  current = this.data.firstMediaId
+  currTemplateData = this
 
   function findSize(el, size) {
     //console.log(getComputedStyle(el[0],null))
@@ -93,7 +101,7 @@ $(document).ready(function(){
           : el[0]['client'+size.substr(0,1).toUpperCase() + size.substr(1)] + 'px';
   }
 
-  if ($('#videoPlayer2').length > 0) {
+  if ($('#videoPlayer'+current+'').length > 0) {
     console.log('ok video player')
     barLoader = function(){
 
@@ -123,9 +131,10 @@ $(document).ready(function(){
 
   function getProgress(actual,timeSet,wdthPxPar){
     actual = elapsedTime()
+    console.log("div width : ", $('div').find('#myLoader').width())
     actWdt = $('div').find('#myLoader').width();
   //  console.log(actWdt)
-  //  console.log(actual,actWdt)
+    //console.log(actual,actWdt)
     if(actWdt < wdthPxPar){
       // px/s = pixels max / temps max
       pxByS = wdthPxPar/timeSet
@@ -134,18 +143,21 @@ $(document).ready(function(){
       var sForPx = 1/pxByS
     //    console.log(pxByS, sForPx);
        var remainder = actual % sForPx;
-     // console.log(remainder, pxByS, actual,sForPx)
-       if (remainder == 0){
+    //  console.log(parseFloat(remainder.toFixed(2)), pxByS, actual,sForPx)
+       if (parseFloat(remainder.toFixed(3)) == 0.001){
         //console.log($('div').find('#myLoader'),dt,$(dt).width());
-        actWdt = Math.round(actWdt / wdthPxPar * 100)
+        console.log("addwidth", actWdt)
+        //actWdt = Math.round(actWdt / wdthPxPar * 100)
+        actWdt = actWdt / wdthPxPar * 100
+        console.log(actWdt, wdthPxPar);
         // console.log('wdt',actWdt,'pxbs', pxByS/100,'wdtmax', wdthPxPar)
         actWdt = actWdt+1
-        // console.log(actWdt);
-        $('div').find('#myLoader').width('' + actWdt+ 'px')
-        // console.log('act wdth :', $('div').find('#myLoader').width())
+        console.log(actWdt);
+        $('div').find('#myLoader').width('' + actWdt+ '%')
+        console.log('act wdth  end:', $('div').find('#myLoader').width())
       }
       setTimeout(function(){
-        // console.log(sForPx,actual,wdthPxPar);
+      //   console.log("next");
         actual = elapsedTime()
         getProgress(actual,20,wdthPxPar)
       }, sForPx*100);
@@ -186,7 +198,7 @@ $(document).ready(function(){
 
       //envoi nextid au serveur
       //redirectotoroute avec id
-
+      console.log(current)
 
       var stri = $('#videoPlayer'+current+"").find('source').attr('src');
       //console.log()
@@ -196,24 +208,30 @@ $(document).ready(function(){
       // Selon la value du bouton (vid_id || wgl_id )
       // switch
       // loadNVP ou loadWebGLGame
-      var isGame = $('.videoPlayer-reponses').find('.active-button').find('i.mediaId').attr('name');
-      var myNextIdMed = $('.videoPlayer-reponses').find('.active-button').find('i.mediaId').attr('id');
+      var isGame = $('.videoPlayer-reponses').find('.active-button').find('input.mediaId').attr('name');
+      var myNextIdMed = $('.videoPlayer-reponses').find('.active-button').find('input.mediaId').attr('id');
+      console.log(isGame,myNextIdMed)
+
       if(isGame){
         loadNVP(myNextIdMed)
       }else{
         loadWebGLGame(myNextIdMed)
       }
+      console.log(currTemplateData, myNextIdMed)
 
       // Récupération du questionnaire
-      var nexQuestio = Questions.Find({mediaId: myNextIdMed})
-      console.log(nexQuestio)
-      // Lors du load préparer le questionnaire
-      // Charger le template avec les questions et les values ( foreach )
-      Blaze.renderWithData(Template.questionFilmOverlay, {_id: nexQuestio._id}, $('body').get(0));
+      Meteor.call('questionGetOneByMedia', myNextIdMed, function(error, nexQuestio){
+            console.log(nexQuestio)
+        // Lors du load préparer le questionnaire
+        // Charger le template avec les questions et les values ( foreach )
+        Blaze.renderWithData(Template.questionFilmOverlay, {_id: nexQuestio._id}, $('body').get(0));
 
 
-      // Au sein du inner fullscreen append en display none
-      // réinitialiser les Controles boutons
+        // Au sein du inner fullscreen append en display none
+        // réinitialiser les Controles boutons
+      })
+
+
 
 
 
@@ -227,6 +245,11 @@ $(document).ready(function(){
       barLoader()
     }
   }, 5000);
+})
+
+$(document).ready(function(){
+
+
 
 
 });
