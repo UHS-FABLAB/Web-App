@@ -19,8 +19,9 @@
         var answerSelect = $('#select_media_output_'+indiceAnswer);
         var htmlOption = "";
         if($(answerSelect).children().length==1){
-        mediasFilmActif.forEach(function(index){
-          htmlOption = '<option value="' + idFilm + '">' + index.title + '</option>';
+        mediasFilmActif.forEach(function(mediaElement){
+
+          htmlOption = '<option value="' + mediaElement._id + '">' + mediaElement.title + '</option>';
           $(answerSelect).append(htmlOption);
         });
       }
@@ -81,7 +82,7 @@
           content: contentQuestion,
           duree: 10,
           filmId: film_id
-          
+
         };
         var reponse = {
           content: "",

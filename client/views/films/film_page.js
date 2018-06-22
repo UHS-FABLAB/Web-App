@@ -19,31 +19,34 @@ var currTemplateData;
 // Statut de la vidéo
 var videoStatus = 1;
 
-function loadWebGLGame(idBuild){
-  //let newWebGL = $('<iframe src="http://localhost:3000/webgl/'+idBuild+'"  width="100%"  height="100%"></iframe>');
-  let divA = $('<div class="fullscreen" id="webGL" style="display:inline-block;"></div>');
-  let divB = $('<div class="divB"></div>');
-  divA.append(divB)
-  $('body').append(divA);
-  Blaze.renderWithData(Template.play, {_id: idBuild}, $('#webGL').get(0));
+function loadWebGLGame(idMedia){
+  // recup du build via le title == mediaId
+  Meteor.call('zipGetOneByMediaId', idMedia, function(error, idBuild){
+    console.log(idBuild)
+    //let newWebGL = $('<iframe src="http://localhost:3000/webgl/'+idBuild+'"  width="100%"  height="100%"></iframe>');
+    let divA = $('<div class="fullscreen" id="webGL" style="display:inline-block;"></div>');
+    let divB = $('<div class="divB"></div>');
+    divA.append(divB)
+    $('body').append(divA);
+    Blaze.renderWithData(Template.play, {_id: idBuild}, $('#webGL').get(0));
 
-  // divB.append(newWebGL);
+    // divB.append(newWebGL);
 
-  idNXV = 3;
-
-  setTimeout(function () {
-    $('#videoPlayer'+current+'').remove();
+//    idNXV = 3;
 
     setTimeout(function () {
-      loadNVP(idNXV)
-    }, 14010);
-  }, 4500)
+      $('#videoPlayer'+current+'').remove();
 
+      // setTimeout(function () {
+      //   loadNVP(idNXV)
+      // }, 14010);
+    }, 4500)
+  })
 }
 
-function loadNVP (idVIdeo) {
+function loadNVP (idVideo) {
 
-  let newVideo = $('<video class="fullscreen" id="videoPlayer'+idVideo+'" ><source id="SourceVd" src="http://localhost:3000/video/'+idVIdeo+'" type="video/mp4"></video>');
+  let newVideo = $('<video class="fullscreen" id="videoPlayer'+idVideo+'" ><source id="SourceVd" src="http://localhost:3000/video/'+idVideo+'" type="video/mp4"></video>');
 console.log('oko')
 //  setTimeout(function () {
    $('#videoPlayer'+current+'').remove();
@@ -58,7 +61,7 @@ console.log('oko')
    $('div').find('#myLoader').width('0px')
     wait = true;
    barLoader()
-   current = idVIdeo
+   current = idVideo
   //}, 3000);
 }
 
@@ -218,9 +221,11 @@ Template.filmPage.onRendered( function(){
         isGame = true
       }
 
-      if(isGame){
+      if(!isGame){
+        console.log("nvp")
         loadNVP(myNextIdMed)
       }else{
+        console.log("webgl")
         loadWebGLGame(myNextIdMed)
       }
       console.log(currTemplateData, myNextIdMed)
@@ -230,7 +235,10 @@ Template.filmPage.onRendered( function(){
             console.log(nexQuestio)
         // Lors du load préparer le questionnaire
         // Charger le template avec les questions et les values ( foreach )
-        Blaze.renderWithData(Template.questionFilmOverlay, {_id: nexQuestio._id}, $('body').get(0));
+
+        $(".videoPlayer-bloc-question").remove()
+
+        Blaze.renderWithData(Template.questionFilmOverlay, {idQ: nexQuestio._id}, $('#question_monQuestionnaire')[0]);
 
 
         // Au sein du inner fullscreen append en display none

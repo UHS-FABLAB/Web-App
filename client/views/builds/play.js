@@ -4,8 +4,8 @@ Template.play.onCreated(function(){
 
 Template.play.helpers({
     root : function(){
-        console.log(Router.current())
-        return "/files/" + Router.current().params._id;
+        console.log(Router.current(), Router.current().params._id, this)
+        return "/files/" + this._id._id;
     }
 });
 
