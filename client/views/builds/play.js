@@ -4,11 +4,18 @@ Template.play.onCreated(function(){
 
 Template.play.helpers({
     root : function(){
+      var routeWebgl = this._id._id
+      if(typeof routeWebgl == 'undefined'){
+        routeWebgl = Router.current().params._id
+      }
         console.log(Router.current(), Router.current().params._id, this)
-        return "/files/" + this._id._id;
+        return "/files/" + routeWebgl;
     }
 });
 
 Template.play.events({
-
+ 'click #spacebtn' : function() {
+   var e = jQuery.Event( "keydown", { keyCode: 32 } );
+   jQuery( "body" ).trigger( e );
+ }
 });
